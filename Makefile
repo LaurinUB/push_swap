@@ -6,7 +6,7 @@
 #    By: luntiet- <luntiet-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/08 10:12:23 by luntiet-          #+#    #+#              #
-#    Updated: 2022/11/08 11:01:37 by luntiet-         ###   ########.fr        #
+#    Updated: 2022/11/09 11:40:54 by luntiet-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,17 +16,24 @@ CFLAGS = -Wall -Werror -Wextra
 
 NAME = push_swap
 
-SRC = main.c
+SRC = main.c ./utils/ft_swap.c \
+		./utils/ft_getnode.c \
+		./utils/ft_getlstcontent.c \
+		./utils/ft_push.c \
+		./utils/ft_rotate.c \
+		./utils/ft_reverse_rotate.c
 
 OBJ = $(SRC:.c=.o)
 
-LIB = ./libft/libft.a
+LIBFT = ./libft/libft.a
 
 all: $(NAME)
 
-$(NAME): $(OBJ)
+$(NAME): $(OBJ) $(LIBFT)
+	@$(CC) $(CFLAGS) $(OBJ) $(LIBFT) -o $(NAME)
+
+$(LIBFT):
 	@cd libft && make && make clean
-	@$(CC) $(CFLAGS) $(OBJ) $(LIB) -o $(NAME)
 
 clean:
 	@rm -rf $(OBJ)
