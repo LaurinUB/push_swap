@@ -6,20 +6,20 @@
 /*   By: luntiet- <luntiet-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 15:40:19 by luntiet-          #+#    #+#             */
-/*   Updated: 2022/11/09 15:44:24 by luntiet-         ###   ########.fr       */
+/*   Updated: 2022/11/10 10:48:25 by luntiet-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void	ft_reverse_rotate_a(t_list **astck)
+void	ft_reverse_rotate_a(t_stack **astck)
 {
-	t_list	*tmp;
-	t_list	*tmp2;
+	t_stack	*tmp;
+	t_stack	*tmp2;
 
 	if (astck && ft_getnode(*astck)->next)
 	{
-		tmp = ft_lstlast(*astck);
+		tmp = ft_stcklast(*astck);
 		tmp2 = *astck;
 		tmp->next = *astck;
 		while (tmp2->next != tmp)
@@ -29,14 +29,14 @@ void	ft_reverse_rotate_a(t_list **astck)
 	}
 }
 
-void	ft_reverse_rotate_b(t_list **bstck)
+void	ft_reverse_rotate_b(t_stack **bstck)
 {
-	t_list	*tmp;
-	t_list	*tmp2;
+	t_stack	*tmp;
+	t_stack	*tmp2;
 
 	if (bstck && ft_getnode(*bstck)->next)
 	{
-		tmp = ft_lstlast(*bstck);
+		tmp = ft_stcklast(*bstck);
 		tmp2 = *bstck;
 		tmp->next = *bstck;
 		while (tmp2->next != tmp)
@@ -46,7 +46,7 @@ void	ft_reverse_rotate_b(t_list **bstck)
 	}
 }
 
-void	ft_reverse_rotate(t_list **astck, t_list **bstck)
+void	ft_reverse_rotate(t_stack **astck, t_stack **bstck)
 {
 	if (*astck && *bstck)
 	{

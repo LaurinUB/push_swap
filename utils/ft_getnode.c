@@ -6,15 +6,15 @@
 /*   By: luntiet- <luntiet-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 12:53:38 by luntiet-          #+#    #+#             */
-/*   Updated: 2022/11/08 12:58:07 by luntiet-         ###   ########.fr       */
+/*   Updated: 2022/11/10 10:38:41 by luntiet-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-t_list	*ft_getnode(t_list *lst)
+t_stack	*ft_getnode(t_stack *stck)
 {
-	if (!lst)
+	if (!stck)
 		return (NULL);
-	return (lst);
+	return (stck);
 }

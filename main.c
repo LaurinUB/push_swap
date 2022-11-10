@@ -6,13 +6,13 @@
 /*   By: luntiet- <luntiet-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 10:07:36 by luntiet-          #+#    #+#             */
-/*   Updated: 2022/11/09 16:03:03 by luntiet-         ###   ########.fr       */
+/*   Updated: 2022/11/10 18:41:20 by luntiet-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_printlst(t_list *a, t_list *b)
+void	ft_printstck(t_stack *a, t_stack *b)
 {
 	while (a || b)
 	{
@@ -20,68 +20,69 @@ void	ft_printlst(t_list *a, t_list *b)
 			ft_printf("\t");
 		else
 		{
-			ft_printf("  %d	", ft_atoi(a->content));
+			ft_printf("  %d	", a->content);
 			a = a->next;
 		}
 		if (!b)
 			ft_printf("\n");
 		else
 		{
-			ft_printf("  %d\n", ft_atoi(b->content));
+			ft_printf("  %d\n", b->content);
 			b = b->next;
 		}
 	}
 	ft_printf("< a >	< b >\n");
 }
 
-void	ft_printstacks(t_list **astck, t_list **bstck)
+void	ft_printstacks(t_stack **astck, t_stack **bstck)
 {
-	ft_printlst(*astck, *bstck);
+	ft_printstck(*astck, *bstck);
 	ft_printf("swap a:\n");
 	ft_swap_a(astck);
-	ft_printlst(*astck, *bstck);
+	ft_printstck(*astck, *bstck);
 	ft_printf("push b 4x:\n");
 	ft_push_b(astck, bstck);
 	ft_push_b(astck, bstck);
 	ft_push_b(astck, bstck);
 	ft_push_b(astck, bstck);
-	ft_printlst(*astck, *bstck);
+	ft_printstck(*astck, *bstck);
 	ft_printf("push a:\n");
 	ft_push_a(astck, bstck);
-	ft_printlst(*astck, *bstck);
+	ft_printstck(*astck, *bstck);
 	ft_printf("rotate\n");
 	ft_rotate(astck, bstck);
-	ft_printlst(*astck, *bstck);
+	ft_printstck(*astck, *bstck);
 	ft_printf("reverse rotate\n");
 	ft_reverse_rotate(astck, bstck);
-	ft_printlst(*astck, *bstck);
+	ft_printstck(*astck, *bstck);
 }
 
 int	main(int argc, char **argv)
 {
-	t_list	**astck;
-	t_list	**bstck;
+	t_stack	**astck;
+	t_stack	**bstck;
 	int		i;
+	t_stack	*tmp;
 
 	i = 1;
-	astck = (t_list **)malloc(sizeof(t_list **));
+	astck = (t_stack **)malloc(sizeof(t_stack **));
 	if (!astck)
 		return (0);
-	bstck = (t_list **)malloc(sizeof(t_list **));
+	bstck = (t_stack **)malloc(sizeof(t_stack **));
 	if (!bstck)
 		return (0);
 	if (argc < 1)
 		ft_printf("Error");
-	if (argc > 1)
+	i = 1;
+	if (argc > 1 /*&& ft_is_int(argv)*/)
 	{
-		*astck = ft_lstnew(argv[1]);
-		i += 1;
 		while (i < argc)
 		{
-			ft_lstadd_back(astck, ft_lstnew(argv[i]));
+			tmp = ft_stcknew(ft_atoi(argv[i]));
+			ft_stckadd_back(astck, tmp);
 			i++;
 		}
-		ft_printstacks(astck,bstck);
+		//ft_printstacks(astck,bstck);
 	}
 	return (0);
 }

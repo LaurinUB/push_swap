@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_getlstcontent.c                                 :+:      :+:    :+:   */
+/*   ft_getstckcontent.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: luntiet- <luntiet-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,9 +12,9 @@
 
 #include "../push_swap.h"
 
-void	*ft_getlstcontent(t_list *lst)
+int	ft_getstckcontent(t_stack *stck)
 {
-	if (!lst)
-		return (NULL);
-	return (lst->content);
+	if (!stck)
+		return (0);
+	return (stck->content);
 }

@@ -6,15 +6,15 @@
 /*   By: luntiet- <luntiet-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 11:32:17 by luntiet-          #+#    #+#             */
-/*   Updated: 2022/11/09 16:13:40 by luntiet-         ###   ########.fr       */
+/*   Updated: 2022/11/10 10:38:18 by luntiet-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void	ft_push_a(t_list **astck, t_list **bstck)
+void	ft_push_a(t_stack **astck, t_stack **bstck)
 {
-	t_list	*tmp;
+	t_stack	*tmp;
 
 	if (!*astck)
 	{
@@ -33,9 +33,9 @@ void	ft_push_a(t_list **astck, t_list **bstck)
 	}
 }
 
-void	ft_push_b(t_list **astck, t_list **bstck)
+void	ft_push_b(t_stack **astck, t_stack **bstck)
 {
-	t_list	*tmp;
+	t_stack	*tmp;
 
 	if (!*bstck)
 	{
