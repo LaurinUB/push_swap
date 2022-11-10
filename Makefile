@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: luntiet- <luntiet-@student.42.fr>          +#+  +:+       +#+         #
+#    By: luntiet <luntiet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/08 10:12:23 by luntiet-          #+#    #+#              #
-#    Updated: 2022/11/10 10:48:51 by luntiet-         ###   ########.fr        #
+#    Updated: 2022/11/10 22:34:27 by luntiet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,10 +30,11 @@ LIBFT = ./libft/libft.a
 
 all: $(NAME)
 
-$(NAME): $(OBJ) $(LIBFT)
+$(NAME): $(LIBFT) $(OBJ)
 	@$(CC) $(CFLAGS) $(OBJ) $(LIBFT) -o $(NAME)
 
 $(LIBFT):
+	@git clone https://github.com/LaurinUB/libft
 	@cd libft && make && make clean
 
 clean:
@@ -41,7 +42,7 @@ clean:
 
 fclean: clean
 	@rm -rf $(NAME)
-	@cd libft && make fclean
+	@rm -rf ./libft
 
 re: fclean all
 
