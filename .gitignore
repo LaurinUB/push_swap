@@ -1,0 +1,5 @@
+#ignore libft
+libft/
+#ignore files
+*.o
+push_swap
