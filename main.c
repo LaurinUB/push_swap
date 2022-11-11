@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luntiet- <luntiet-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: luntiet <luntiet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 10:07:36 by luntiet-          #+#    #+#             */
-/*   Updated: 2022/11/11 16:06:14 by luntiet-         ###   ########.fr       */
+/*   Updated: 2022/11/11 21:53:55 by luntiet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,11 @@ static int	ft_is_int(char **argv)
 		i++;
 	}
 	return (1);
+}
+
+static int	ft_isnotdouble(t_stack *astck)
+{
+	
 }
 
 static int	ft_fill_from_string(t_stack **astck, t_stack *tmp, char **argv)
@@ -108,6 +113,8 @@ int	main(int argc, char **argv)
 		if (!ft_init_stack(astck, argv, argc))
 			return (free(astck), free(bstck), 0);
 		ft_set_index(astck);
+		if (ft_is_sorted(*astck))
+			ft_printstck(*astck);
 	}
 	return (0);
 }

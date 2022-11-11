@@ -3,14 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   index.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luntiet- <luntiet-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: luntiet <luntiet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 11:23:47 by luntiet-          #+#    #+#             */
-/*   Updated: 2022/11/11 13:58:37 by luntiet-         ###   ########.fr       */
+/*   Updated: 2022/11/11 21:41:10 by luntiet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
+
+int	ft_is_sorted(t_stack *astck)
+{
+	while (astck->next && astck)
+	{
+		if (astck->index > astck->next->index)
+			return (0);
+		else
+			astck = astck->next;
+	}
+	return (1);
+}
+
 
 static t_stack	*ft_next_min(t_stack **stck)
 {

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luntiet- <luntiet-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: luntiet <luntiet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 09:38:14 by luntiet-          #+#    #+#             */
-/*   Updated: 2022/11/11 14:24:43 by luntiet-         ###   ########.fr       */
+/*   Updated: 2022/11/11 21:36:22 by luntiet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ void	ft_stckadd_back(t_stack **stck, t_stack *new);
 void	ft_stckclear(t_stack **stck, void (*del)(void *));
 //indexing
 void	ft_set_index(t_stack **stck);
+int		ft_is_sorted(t_stack *astck);
 //printing
 void	ft_teststacks(t_stack **astck, t_stack **bstck);
 void	ft_printstcks(t_stack *a, t_stack *b);
