@@ -6,83 +6,108 @@
 /*   By: luntiet- <luntiet-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 10:07:36 by luntiet-          #+#    #+#             */
-/*   Updated: 2022/11/10 18:41:20 by luntiet-         ###   ########.fr       */
+/*   Updated: 2022/11/11 16:06:14 by luntiet-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_printstck(t_stack *a, t_stack *b)
+static int	ft_is_int(char **argv)
 {
-	while (a || b)
+	int	i;
+	int	j;
+
+	i = 1;
+	j = 0;
+	while (argv[i])
 	{
-		if(!a)
-			ft_printf("\t");
-		else
+		while (argv[i][j])
 		{
-			ft_printf("  %d	", a->content);
-			a = a->next;
+			if (ft_isdigit(argv[i][j]))
+				j++;
+			else if (argv[i][j] == '-' && ft_isdigit(argv[i][j + 1]))
+				j++;
+			else if (argv[i][j] == ' ')
+				j++;
+			else
+				return (0);
 		}
-		if (!b)
-			ft_printf("\n");
-		else
-		{
-			ft_printf("  %d\n", b->content);
-			b = b->next;
-		}
+		j = 0;
+		i++;
 	}
-	ft_printf("< a >	< b >\n");
+	return (1);
 }
 
-void	ft_printstacks(t_stack **astck, t_stack **bstck)
+static int	ft_fill_from_string(t_stack **astck, t_stack *tmp, char **argv)
 {
-	ft_printstck(*astck, *bstck);
-	ft_printf("swap a:\n");
-	ft_swap_a(astck);
-	ft_printstck(*astck, *bstck);
-	ft_printf("push b 4x:\n");
-	ft_push_b(astck, bstck);
-	ft_push_b(astck, bstck);
-	ft_push_b(astck, bstck);
-	ft_push_b(astck, bstck);
-	ft_printstck(*astck, *bstck);
-	ft_printf("push a:\n");
-	ft_push_a(astck, bstck);
-	ft_printstck(*astck, *bstck);
-	ft_printf("rotate\n");
-	ft_rotate(astck, bstck);
-	ft_printstck(*astck, *bstck);
-	ft_printf("reverse rotate\n");
-	ft_reverse_rotate(astck, bstck);
-	ft_printstck(*astck, *bstck);
+	int		i;
+	char	**str;
+	long	current;
+
+	i = 0;
+	str = ft_split(argv[1], ' ');
+	current = 0;
+	if (!astck || !argv)
+	{
+		ft_printf("Error\n");
+		return (0);
+	}
+	else
+	{
+		while (str[i])
+		{
+			current = ft_atoi(str[i]);
+			tmp = ft_stcknew(current);
+			ft_stckadd_back(astck, tmp);
+			i++;
+		}
+		return (1);
+	}
 }
 
-int	main(int argc, char **argv)
+static int	ft_init_stack(t_stack **astck, char **argv, int argc)
 {
-	t_stack	**astck;
-	t_stack	**bstck;
 	int		i;
 	t_stack	*tmp;
 
-	i = 1;
-	astck = (t_stack **)malloc(sizeof(t_stack **));
-	if (!astck)
-		return (0);
-	bstck = (t_stack **)malloc(sizeof(t_stack **));
-	if (!bstck)
-		return (0);
-	if (argc < 1)
-		ft_printf("Error");
-	i = 1;
-	if (argc > 1 /*&& ft_is_int(argv)*/)
+	tmp = NULL;
+	if (argc == 2)
+		return (ft_fill_from_string(astck, tmp, argv));
+	else
 	{
+		i = 1;
 		while (i < argc)
 		{
 			tmp = ft_stcknew(ft_atoi(argv[i]));
 			ft_stckadd_back(astck, tmp);
 			i++;
 		}
-		//ft_printstacks(astck,bstck);
+		return (1);
+	}
+	return (0);
+}
+
+int	main(int argc, char **argv)
+{
+	t_stack	**astck;
+	t_stack	**bstck;
+
+	astck = (t_stack **)malloc(sizeof(t_stack **));
+	if (!astck)
+		return (0);
+	bstck = (t_stack **)malloc(sizeof(t_stack **));
+	if (!bstck)
+		return (0);
+	if (argc < 1 || !ft_is_int(argv))
+	{
+		ft_printf("Error\n");
+		return (0);
+	}
+	if (argc > 1)
+	{
+		if (!ft_init_stack(astck, argv, argc))
+			return (free(astck), free(bstck), 0);
+		ft_set_index(astck);
 	}
 	return (0);
 }

@@ -3,3 +3,4 @@ libft/
 #ignore files
 *.o
 push_swap
+.vscode

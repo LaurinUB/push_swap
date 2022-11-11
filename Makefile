@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: luntiet <luntiet@student.42.fr>            +#+  +:+       +#+         #
+#    By: luntiet- <luntiet-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/08 10:12:23 by luntiet-          #+#    #+#              #
-#    Updated: 2022/11/10 22:34:27 by luntiet          ###   ########.fr        #
+#    Updated: 2022/11/11 15:47:59 by luntiet-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,13 +16,14 @@ CFLAGS = -Wall -Werror -Wextra
 
 NAME = push_swap
 
-SRC = main.c ./utils/ft_swap.c \
-		./utils/ft_getnode.c \
-		./utils/ft_getlstcontent.c \
-		./utils/ft_push.c \
-		./utils/ft_rotate.c \
-		./utils/ft_reverse_rotate.c \
-		./utils/t_stack.c
+SRC = main.c ./operations/ft_swap.c \
+		./operations/ft_push.c \
+		./operations/ft_rotate.c \
+		./operations/ft_reverse_rotate.c \
+		./utils/t_stack.c \
+		./utils/t_stack_utils.c \
+		./utils/index.c \
+		./printer/printing.c
 
 OBJ = $(SRC:.c=.o)
 
@@ -36,6 +37,10 @@ $(NAME): $(LIBFT) $(OBJ)
 $(LIBFT):
 	@git clone https://github.com/LaurinUB/libft
 	@cd libft && make && make clean
+
+debug : CFLAGS += -g
+
+debug : all
 
 clean:
 	@rm -rf $(OBJ)
