@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   index.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luntiet <luntiet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: luntiet- <luntiet-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 11:23:47 by luntiet-          #+#    #+#             */
-/*   Updated: 2022/11/11 21:41:10 by luntiet          ###   ########.fr       */
+/*   Updated: 2022/11/12 11:24:05 by luntiet-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ int	ft_is_sorted(t_stack *astck)
 	}
 	return (1);
 }
-
 
 static t_stack	*ft_next_min(t_stack **stck)
 {

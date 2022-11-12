@@ -6,7 +6,7 @@
 #    By: luntiet- <luntiet-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/08 10:12:23 by luntiet-          #+#    #+#              #
-#    Updated: 2022/11/11 15:47:59 by luntiet-         ###   ########.fr        #
+#    Updated: 2022/11/12 15:12:27 by luntiet-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,7 +40,11 @@ $(LIBFT):
 
 debug : CFLAGS += -g
 
-debug : all
+debug : re
+
+san : CFLAGS +=  -g -fsanitize=address
+
+san : re
 
 clean:
 	@rm -rf $(OBJ)
