@@ -6,7 +6,7 @@
 /*   By: luntiet- <luntiet-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 13:59:41 by luntiet-          #+#    #+#             */
-/*   Updated: 2022/11/11 14:00:37 by luntiet-         ###   ########.fr       */
+/*   Updated: 2022/11/16 16:17:00 by luntiet-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,23 +54,5 @@ void	ft_printstcks(t_stack *a, t_stack *b)
 
 void	ft_teststacks(t_stack **astck, t_stack **bstck)
 {
-	ft_printstcks(*astck, *bstck);
-	ft_printf("swap a:\n");
-	ft_swap_a(astck);
-	ft_printstcks(*astck, *bstck);
-	ft_printf("push b 4x:\n");
-	ft_push_b(astck, bstck);
-	ft_push_b(astck, bstck);
-	ft_push_b(astck, bstck);
-	ft_push_b(astck, bstck);
-	ft_printstcks(*astck, *bstck);
-	ft_printf("push a:\n");
-	ft_push_a(astck, bstck);
-	ft_printstcks(*astck, *bstck);
-	ft_printf("rotate\n");
-	ft_rotate(astck, bstck);
-	ft_printstcks(*astck, *bstck);
-	ft_printf("reverse rotate\n");
-	ft_reverse_rotate(astck, bstck);
 	ft_printstcks(*astck, *bstck);
 }

@@ -6,7 +6,7 @@
 #    By: luntiet- <luntiet-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/08 10:12:23 by luntiet-          #+#    #+#              #
-#    Updated: 2022/11/12 15:12:27 by luntiet-         ###   ########.fr        #
+#    Updated: 2022/11/16 18:24:56 by luntiet-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,8 @@ SRC = main.c ./operations/ft_swap.c \
 		./utils/t_stack.c \
 		./utils/t_stack_utils.c \
 		./utils/index.c \
-		./printer/printing.c
+		./printer/printing.c \
+		./sort/quicksort.c
 
 OBJ = $(SRC:.c=.o)
 

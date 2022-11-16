@@ -6,7 +6,7 @@
 /*   By: luntiet- <luntiet-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 15:40:19 by luntiet-          #+#    #+#             */
-/*   Updated: 2022/11/10 10:48:25 by luntiet-         ###   ########.fr       */
+/*   Updated: 2022/11/16 14:55:13 by luntiet-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	ft_reverse_rotate_a(t_stack **astck)
 	t_stack	*tmp;
 	t_stack	*tmp2;
 
-	if (astck && ft_getnode(*astck)->next)
+	if (astck && (*astck)->next)
 	{
 		tmp = ft_stcklast(*astck);
 		tmp2 = *astck;
@@ -34,7 +34,7 @@ void	ft_reverse_rotate_b(t_stack **bstck)
 	t_stack	*tmp;
 	t_stack	*tmp2;
 
-	if (bstck && ft_getnode(*bstck)->next)
+	if (bstck && (*bstck)->next)
 	{
 		tmp = ft_stcklast(*bstck);
 		tmp2 = *bstck;

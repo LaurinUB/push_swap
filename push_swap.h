@@ -6,7 +6,7 @@
 /*   By: luntiet- <luntiet-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 09:38:14 by luntiet-          #+#    #+#             */
-/*   Updated: 2022/11/12 11:21:43 by luntiet-         ###   ########.fr       */
+/*   Updated: 2022/11/14 14:57:18 by luntiet-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,6 @@ void	ft_rotate(t_stack **astck, t_stack **bstck);
 void	ft_reverse_rotate_a(t_stack **astck);
 void	ft_reverse_rotate_b(t_stack **bstck);
 void	ft_reverse_rotate(t_stack **astck, t_stack **bstck);
-//getter
-t_stack	*ft_getnode(t_stack *stck);
-int		ft_getstckcontent(t_stack *stck);
 //stack
 t_stack	*ft_stcknew(int content);
 int		ft_stcksize(t_stack *stck);
@@ -47,7 +44,10 @@ void	ft_stckadd_back(t_stack **stck, t_stack *new);
 void	ft_stckclear(t_stack **stck, void (*del)(void *));
 //indexing
 void	ft_set_index(t_stack **stck);
-int		ft_is_sorted(t_stack *astck);
+//sortcheck
+int		ft_is_rev_sorted(t_stack *stck);
+int		ft_is_sorted(t_stack *stck);
+void	ft_sort(t_stack **astck, t_stack **bstck);
 //printing
 void	ft_teststacks(t_stack **astck, t_stack **bstck);
 void	ft_printstcks(t_stack *a, t_stack *b);

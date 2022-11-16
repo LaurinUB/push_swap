@@ -6,7 +6,7 @@
 /*   By: luntiet- <luntiet-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 10:07:36 by luntiet-          #+#    #+#             */
-/*   Updated: 2022/11/12 14:59:44 by luntiet-         ###   ########.fr       */
+/*   Updated: 2022/11/16 19:26:54 by luntiet-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	ft_is_int(char **argv)
 	return (1);
 }
 
-int	ft_has_int(t_stack **stck, int nbr)
+int	ft_has_double(t_stack **stck, int nbr)
 {
 	t_stack	*tmp;
 
@@ -70,7 +70,7 @@ int	ft_fill_from_string(t_stack **astck, t_stack *tmp, char **argv)
 	{
 		while (str[i])
 		{
-			if (ft_has_int(astck, ft_atoi(str[i])))
+			if (ft_has_double(astck, ft_atoi(str[i])))
 			{
 				ft_putstr_fd("Error\n", 2);
 				return (0);
@@ -79,7 +79,7 @@ int	ft_fill_from_string(t_stack **astck, t_stack *tmp, char **argv)
 			ft_stckadd_back(astck, tmp);
 			i++;
 		}
-		return ( 1);
+		return (1);
 	}
 }
 
@@ -88,7 +88,7 @@ int	ft_init_stack(t_stack **astck, char **argv, int argc)
 	int		i;
 	t_stack	*tmp;
 
-	tmp = NULL;
+	tmp = malloc(sizeof(t_stack));
 	if (argc == 2)
 		return (ft_fill_from_string(astck, tmp, argv));
 	else
@@ -96,12 +96,12 @@ int	ft_init_stack(t_stack **astck, char **argv, int argc)
 		i = 1;
 		while (i < argc)
 		{
-			if (ft_has_int(astck, ft_atoi(argv[i])))
+			if (ft_has_double(astck, ft_atoi(argv[i])))
 			{
 				ft_putstr_fd("Error\n", 2);
 				return (0);
 			}
-						tmp = ft_stcknew(ft_atoi(argv[i]));
+			tmp = ft_stcknew(ft_atoi(argv[i]));
 			ft_stckadd_back(astck, tmp);
 			i++;
 		}
@@ -121,6 +121,8 @@ int	main(int argc, char **argv)
 	bstck = malloc(sizeof(t_stack *));
 	if (!bstck)
 		return (0);
+	*astck = NULL;
+	*bstck = NULL;
 	if (argc < 1 || !ft_is_int(argv))
 	{
 		ft_putstr_fd("Error\n", 2);
@@ -131,9 +133,11 @@ int	main(int argc, char **argv)
 		if (!ft_init_stack(astck, argv, argc))
 			return (free(astck), free(bstck), 0);
 		ft_set_index(astck);
-		ft_printstck(*astck);
-		ft_printf("\n");
-		ft_printindex(*astck);
+		ft_sort(astck, bstck);
+		//ft_teststacks(astck, bstck);
+		//ft_printstcks(*astck, *bstck);
+		//ft_printf("\n");
+		ft_printindex(*bstck);
 	}
 	return (0);
 }
