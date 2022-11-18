@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luntiet- <luntiet-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: luntiet <luntiet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 09:38:14 by luntiet-          #+#    #+#             */
-/*   Updated: 2022/11/12 11:21:43 by luntiet-         ###   ########.fr       */
+/*   Updated: 2022/11/18 09:12:11 by luntiet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,13 @@ typedef struct s_stack
 	int				index;
 	struct s_stack	*next;
 }					t_stack;
+
+typedef struct s_stacks
+{
+	struct s_stack	*a;
+	struct s_stack	*b;
+	char			*arr;
+}					t_stacks;
 
 //swapper
 void	ft_swap_a(t_stack **stck);
@@ -40,6 +47,7 @@ void	ft_reverse_rotate(t_stack **astck, t_stack **bstck);
 t_stack	*ft_getnode(t_stack *stck);
 int		ft_getstckcontent(t_stack *stck);
 //stack
+t_stacks    *ft_newstacks(t_stack *a);
 t_stack	*ft_stcknew(int content);
 int		ft_stcksize(t_stack *stck);
 t_stack	*ft_stcklast(t_stack *stck);
