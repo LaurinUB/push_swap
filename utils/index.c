@@ -6,23 +6,11 @@
 /*   By: luntiet- <luntiet-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 11:23:47 by luntiet-          #+#    #+#             */
-/*   Updated: 2022/11/12 11:24:05 by luntiet-         ###   ########.fr       */
+/*   Updated: 2022/11/14 13:45:13 by luntiet-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
-
-int	ft_is_sorted(t_stack *astck)
-{
-	while (astck->next && astck)
-	{
-		if (astck->index > astck->next->index)
-			return (0);
-		else
-			astck = astck->next;
-	}
-	return (1);
-}
 
 static t_stack	*ft_next_min(t_stack **stck)
 {

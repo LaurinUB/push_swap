@@ -6,7 +6,7 @@
 /*   By: luntiet- <luntiet-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 15:40:11 by luntiet-          #+#    #+#             */
-/*   Updated: 2022/11/10 10:48:38 by luntiet-         ###   ########.fr       */
+/*   Updated: 2022/11/16 15:23:39 by luntiet-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,37 +16,48 @@ void	ft_rotate_a(t_stack **astck)
 {
 	t_stack	*tmp;
 
-	if (astck && ft_getnode(*astck)->next)
+	if (astck && (*astck) && (*astck)->next)
 	{
 		tmp = *astck;
 		*astck = tmp->next;
 		tmp->next = NULL;
 		ft_stckadd_back(astck, tmp);
 	}
+	ft_printf("ra\n");
 }
 
 void	ft_rotate_b(t_stack **bstck)
 {
 	t_stack	*tmp;
 
-	if (bstck && ft_getnode(*bstck)->next)
+	if (bstck && (*bstck) && (*bstck)->next)
 	{
 		tmp = *bstck;
 		*bstck = tmp->next;
 		tmp->next = NULL;
 		ft_stckadd_back(bstck, tmp);
 	}
+	ft_printf("rb\n");
 }
 
 void	ft_rotate(t_stack **astck, t_stack **bstck)
 {
+	t_stack	*tmp;
+
 	if (*astck && *bstck)
 	{
-		ft_rotate_a(astck);
-		ft_rotate_a(bstck);
+		tmp = *astck;
+		*astck = tmp->next;
+		tmp->next = NULL;
+		ft_stckadd_back(astck, tmp);
+		tmp = *bstck;
+		*bstck = tmp->next;
+		tmp->next = NULL;
+		ft_stckadd_back(bstck, tmp);
+		ft_printf("rr\n");
 	}
 	else if (*astck && !*bstck)
 		ft_rotate_a(astck);
 	else if (!*astck && *bstck)
-		ft_rotate_a(bstck);
+		ft_rotate_b(bstck);
 }

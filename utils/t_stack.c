@@ -6,7 +6,7 @@
 /*   By: luntiet- <luntiet-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 10:36:48 by luntiet-          #+#    #+#             */
-/*   Updated: 2022/11/12 14:40:57 by luntiet-         ###   ########.fr       */
+/*   Updated: 2022/11/16 14:25:49 by luntiet-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ t_stack	*ft_stcknew(int content)
 {
 	t_stack	*element;
 
-	element = (t_stack *)malloc(sizeof(t_stack));
+	element = malloc(sizeof(t_stack));
 	if (!element)
 		return (NULL);
 	element->content = content;

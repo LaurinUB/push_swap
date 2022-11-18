@@ -6,7 +6,7 @@
 /*   By: luntiet- <luntiet-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 11:32:17 by luntiet-          #+#    #+#             */
-/*   Updated: 2022/11/11 13:56:00 by luntiet-         ###   ########.fr       */
+/*   Updated: 2022/11/16 18:27:36 by luntiet-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,14 @@ void	ft_push_a(t_stack **astck, t_stack **bstck)
 		tmp->next = NULL;
 		*astck = tmp;
 	}
-	if (*bstck && astck)
+	else if (*bstck && astck)
 	{
 		tmp = *bstck;
 		*bstck = tmp->next;
-		tmp->next = ft_getnode(*astck);
+		tmp->next = (*astck);
 		*astck = tmp;
 	}
+	ft_printf("pb\n");
 }
 
 void	ft_push_b(t_stack **astck, t_stack **bstck)
@@ -47,7 +48,8 @@ void	ft_push_b(t_stack **astck, t_stack **bstck)
 	{
 		tmp = *astck;
 		*astck = tmp->next;
-		tmp->next = ft_getnode(*bstck);
+		tmp->next = (*bstck);
 		*bstck = tmp;
 	}
+	ft_printf("pa\n");
 }
