@@ -6,7 +6,7 @@
 /*   By: luntiet- <luntiet-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 11:32:17 by luntiet-          #+#    #+#             */
-/*   Updated: 2022/11/16 18:27:36 by luntiet-         ###   ########.fr       */
+/*   Updated: 2022/11/22 11:16:53 by luntiet-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void	ft_push_a(t_stack **astck, t_stack **bstck)
 		*bstck = tmp->next;
 		tmp->next = NULL;
 		*astck = tmp;
+		ft_printf("pa\n");
 	}
 	else if (*bstck && astck)
 	{
@@ -29,8 +30,8 @@ void	ft_push_a(t_stack **astck, t_stack **bstck)
 		*bstck = tmp->next;
 		tmp->next = (*astck);
 		*astck = tmp;
+		ft_printf("pa\n");
 	}
-	ft_printf("pb\n");
 }
 
 void	ft_push_b(t_stack **astck, t_stack **bstck)
@@ -43,6 +44,7 @@ void	ft_push_b(t_stack **astck, t_stack **bstck)
 		*astck = tmp->next;
 		tmp->next = NULL;
 		*bstck = tmp;
+		ft_printf("pb\n");
 	}
 	else if (bstck && *astck)
 	{
@@ -50,6 +52,6 @@ void	ft_push_b(t_stack **astck, t_stack **bstck)
 		*astck = tmp->next;
 		tmp->next = (*bstck);
 		*bstck = tmp;
+		ft_printf("pb\n");
 	}
-	ft_printf("pa\n");
 }

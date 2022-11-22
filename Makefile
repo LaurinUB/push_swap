@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: luntiet <luntiet@student.42.fr>            +#+  +:+       +#+         #
+#    By: luntiet- <luntiet-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/08 10:12:23 by luntiet-          #+#    #+#              #
-#    Updated: 2022/11/18 09:35:08 by luntiet          ###   ########.fr        #
+#    Updated: 2022/11/22 07:29:06 by luntiet-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,12 +20,13 @@ SRC = main.c ./operations/ft_swap.c \
 		./operations/ft_push.c \
 		./operations/ft_rotate.c \
 		./operations/ft_reverse_rotate.c \
-		./utils/t_stack.c \
-		./utils/t_stack_utils.c \
-		./utils/t_stacks.c \
-		./utils/index.c \
+		./struct/t_stack.c \
+		./struct/t_stack_utils.c \
+		./struct/t_stacks.c \
+		./struct/index.c \
 		./printer/printing.c \
-		./sort/quicksort.c
+		./sort/sort.c \
+		./sort/sort_utils.c
 
 OBJ = $(SRC:.c=.o)
 
@@ -34,7 +35,7 @@ LIBFT = ./libft/libft.a
 all: $(NAME)
 
 $(NAME): $(LIBFT) $(OBJ)
-	@$(CC) $(CFLAGS) $(OBJ) $(LIBFT) -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJ) $(LIBFT) -o $(NAME)
 
 $(LIBFT):
 	@git clone https://github.com/LaurinUB/libft

@@ -6,7 +6,7 @@
 /*   By: luntiet- <luntiet-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 11:54:20 by luntiet-          #+#    #+#             */
-/*   Updated: 2022/11/14 11:55:56 by luntiet-         ###   ########.fr       */
+/*   Updated: 2022/11/22 08:13:35 by luntiet-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void	ft_swap_a(t_stack **stck)
 		third = (*stck)->next;
 		first->next = third;
 		(*stck)->next = first;
+		ft_printf("sa\n");
 	}
 }
 
@@ -39,6 +40,7 @@ void	ft_swap_b(t_stack **stck)
 		third = (*stck)->next;
 		first->next = third;
 		(*stck)->next = first;
+		ft_printf("sb\n");
 	}
 }
 
@@ -48,6 +50,7 @@ void	ft_swap(t_stack **astck, t_stack **bstck)
 	{
 		ft_swap_a(astck);
 		ft_swap_b(bstck);
+		ft_printf("ss\n");
 	}
 	else if (*astck && !*bstck)
 		ft_swap_a(astck);

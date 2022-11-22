@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luntiet <luntiet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: luntiet- <luntiet-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 10:07:36 by luntiet-          #+#    #+#             */
-/*   Updated: 2022/11/18 09:35:18 by luntiet          ###   ########.fr       */
+/*   Updated: 2022/11/22 13:27:50 by luntiet-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,8 @@ t_stack	*ft_fill_from_string(t_stack *tmp, char **argv)
 
 	i = 0;
 	str = ft_split(argv[1], ' ');
+	if (!str)
+		return (NULL);
 	a = NULL;
 	if (!argv)
 		return (ft_putstr_fd("Error\n", 2), NULL);
@@ -81,36 +83,28 @@ t_stack	*ft_fill_from_string(t_stack *tmp, char **argv)
 
 t_stacks	*ft_init_stack(char **argv, int argc)
 {
-	int		i;
-	t_stacks	*new;
+	int			i;
 	t_stack		*a;
 	t_stack		*tmp;
 
 	tmp = NULL;
 	a = NULL;
 	if (argc == 2)
-	{
 		a = ft_fill_from_string(tmp, argv);
-		if (!a)
-			return (NULL);
-	}
 	else
 	{
 		i = 1;
 		while (i < argc)
 		{
 			if (ft_has_double(a, ft_atoi(argv[i])))
-			{
-				
 				return (ft_putstr_fd("Error\n", 2), NULL);
-			}
 			tmp = ft_stcknew(ft_atoi(argv[i]));
 			ft_stckadd_back(&a, tmp);
 			i++;
 		}
 	}
-	new = ft_newstacks(a);
-	return (new);
+	ft_set_index(&a);
+	return (ft_newstacks(a));
 }
 
 int	main(int argc, char **argv)
@@ -126,8 +120,9 @@ int	main(int argc, char **argv)
 		stck = ft_init_stack(argv, argc);
 		if (!stck)
 			return (0);
-		ft_set_index(&stck->a);
-		ft_teststacks(&stck->a, &stck->b);
+		//ft_teststacks(&stck->a, &stck->b);
+		ft_sort(stck);
+		//ft_printindex(stck->a);
 	}
 	return (0);
 }
