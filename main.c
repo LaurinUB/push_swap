@@ -6,7 +6,7 @@
 /*   By: luntiet- <luntiet-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 10:07:36 by luntiet-          #+#    #+#             */
-/*   Updated: 2022/11/22 13:27:50 by luntiet-         ###   ########.fr       */
+/*   Updated: 2022/11/22 17:44:08 by luntiet-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,7 +122,7 @@ int	main(int argc, char **argv)
 			return (0);
 		//ft_teststacks(&stck->a, &stck->b);
 		ft_sort(stck);
-		//ft_printindex(stck->a);
+		//ft_printindex(stck->b);
 	}
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: luntiet- <luntiet-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 12:53:38 by luntiet-          #+#    #+#             */
-/*   Updated: 2022/11/22 16:13:18 by luntiet-         ###   ########.fr       */
+/*   Updated: 2022/11/22 17:21:41 by luntiet-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,13 +40,16 @@ int	ft_is_rev_sorted(t_stack *stck)
 	return (1);
 }
 
-int	ft_stack_has_index(t_stack **stck, int nbr)
+int	ft_stack_has_index(t_stack *stck, int nbr)
 {
-	while ((*stck))
+	t_stack	*tmp;
+
+	tmp = stck;
+	while (tmp)
 	{
-		if ((*stck)->index == nbr)
+		if (tmp->index == nbr)
 			return (1);
-		(*stck) = (*stck)->next;
+		tmp = tmp->next;
 	}
 	return (0);
 }

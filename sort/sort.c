@@ -6,7 +6,7 @@
 /*   By: luntiet- <luntiet-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 16:41:59 by luntiet-          #+#    #+#             */
-/*   Updated: 2022/11/22 16:41:07 by luntiet-         ###   ########.fr       */
+/*   Updated: 2022/11/22 17:43:33 by luntiet-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,7 @@ int	ft_part_of_chunk(t_stacks *stck, int min, int max, int option)
 	i = 0;
 	while (i < ft_stcksize(stck->a))
 	{
-		if (stck->arr[i] >= min && stck->arr[i] < max
-			&& !ft_stack_has_index(&stck->b, stck->arr[i]))
+		if (stck->arr[i] >= min && stck->arr[i] <= max)
 		{
 			if (option == 1)
 				return (stck->arr[i]);
@@ -29,14 +28,15 @@ int	ft_part_of_chunk(t_stacks *stck, int min, int max, int option)
 		}
 		i++;
 	}
-	return (0);
+	return (-1);
 }
 
 int	ft_operate_calc(t_stacks *stck, int min, int pivot, int max)
 {
-	if (stck->a && ft_part_of_chunk(stck, min, max, 2) > ft_stcksize(stck->a) / 2)
+	if (stck->a && ft_part_of_chunk(stck, min, max, 2) >= ft_stcksize(stck->a) / 2)
 	{
-		while (stck->a->index != ft_part_of_chunk(stck, min, max, 1))
+		while (!ft_stack_has_index(stck->b, min) &&
+			stck->a->index != ft_part_of_chunk(stck, min, max, 1))
 			ft_reverse_rotate_a(&stck->a);
 		if (stck->a->index <= pivot)
 			ft_push_b(&stck->a, &stck->b);
@@ -48,7 +48,8 @@ int	ft_operate_calc(t_stacks *stck, int min, int pivot, int max)
 	}
 	else
 	{
-		while (stck->a->index != ft_part_of_chunk(stck, min, max, 1))
+		while (!ft_stack_has_index(stck->b, min) &&
+			stck->a->index != ft_part_of_chunk(stck, min, max, 1))
 			ft_rotate_a(&stck->a);
 		if (stck->a->index <= pivot)
 			ft_push_b(&stck->a, &stck->b);
@@ -95,7 +96,7 @@ void	ft_chunk_sort(t_stacks *stck, int chunk)
 		max += chunksize;
 		pivot = max - (chunksize / 2);
 	}
-	ft_sortback_to_a(stck);
+	//ft_sortback_to_a(stck);
 }
 
 void	ft_sort(t_stacks *stck)
