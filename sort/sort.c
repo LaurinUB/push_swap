@@ -6,22 +6,37 @@
 /*   By: luntiet- <luntiet-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 16:41:59 by luntiet-          #+#    #+#             */
-/*   Updated: 2022/11/22 13:24:11 by luntiet-         ###   ########.fr       */
+/*   Updated: 2022/11/22 16:41:07 by luntiet-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-int	ft_operate_calc(t_stacks *stck, int min, int pivot, int size)
+int	ft_part_of_chunk(t_stacks *stck, int min, int max, int option)
 {
 	int	i;
 
 	i = 0;
-	while (stck->arr[i] != min && i < size)
-		i++;
-	if (stck->a && i > ft_stcksize(stck->a) / 2)
+	while (i < ft_stcksize(stck->a))
 	{
-		while (stck->a->index != min)
+		if (stck->arr[i] >= min && stck->arr[i] < max
+			&& !ft_stack_has_index(&stck->b, stck->arr[i]))
+		{
+			if (option == 1)
+				return (stck->arr[i]);
+			else if (option == 2)
+				return (i);
+		}
+		i++;
+	}
+	return (0);
+}
+
+int	ft_operate_calc(t_stacks *stck, int min, int pivot, int max)
+{
+	if (stck->a && ft_part_of_chunk(stck, min, max, 2) > ft_stcksize(stck->a) / 2)
+	{
+		while (stck->a->index != ft_part_of_chunk(stck, min, max, 1))
 			ft_reverse_rotate_a(&stck->a);
 		if (stck->a->index <= pivot)
 			ft_push_b(&stck->a, &stck->b);
@@ -33,20 +48,17 @@ int	ft_operate_calc(t_stacks *stck, int min, int pivot, int size)
 	}
 	else
 	{
-		while (stck->a && stck->a->index != min)
+		while (stck->a->index != ft_part_of_chunk(stck, min, max, 1))
 			ft_rotate_a(&stck->a);
 		if (stck->a->index <= pivot)
-		{
 			ft_push_b(&stck->a, &stck->b);
-		}
 		else
 		{
 			ft_push_b(&stck->a, &stck->b);
 			ft_rotate_b(&stck->b);
 		}
 	}
-	ft_changearr(stck);
-	return (1);
+	return (ft_changearr(stck), 1);
 }
 
 void	ft_sortback_to_a(t_stacks *stck)
@@ -79,7 +91,7 @@ void	ft_chunk_sort(t_stacks *stck, int chunk)
 	while (stck->a)
 	{
 		while (min <= max && min < size)
-			min += ft_operate_calc(stck, min, pivot, size);
+			min += ft_operate_calc(stck, min, pivot, max);
 		max += chunksize;
 		pivot = max - (chunksize / 2);
 	}
