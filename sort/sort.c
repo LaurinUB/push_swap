@@ -6,7 +6,7 @@
 /*   By: luntiet- <luntiet-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 16:41:59 by luntiet-          #+#    #+#             */
-/*   Updated: 2022/11/22 17:43:33 by luntiet-         ###   ########.fr       */
+/*   Updated: 2022/11/22 19:02:57 by luntiet-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ int	ft_part_of_chunk(t_stacks *stck, int min, int max, int option)
 				return (stck->arr[i]);
 			else if (option == 2)
 				return (i);
+			else if (option == 3)
+				return (1);
 		}
 		i++;
 	}
@@ -38,7 +40,7 @@ int	ft_operate_calc(t_stacks *stck, int min, int pivot, int max)
 		while (!ft_stack_has_index(stck->b, min) &&
 			stck->a->index != ft_part_of_chunk(stck, min, max, 1))
 			ft_reverse_rotate_a(&stck->a);
-		if (stck->a->index <= pivot)
+		if (stck->a->index <= pivot && ft_part_of_chunk(stck, min, max, 3))
 			ft_push_b(&stck->a, &stck->b);
 		else
 		{
@@ -51,7 +53,7 @@ int	ft_operate_calc(t_stacks *stck, int min, int pivot, int max)
 		while (!ft_stack_has_index(stck->b, min) &&
 			stck->a->index != ft_part_of_chunk(stck, min, max, 1))
 			ft_rotate_a(&stck->a);
-		if (stck->a->index <= pivot)
+		if (stck->a->index <= pivot && ft_part_of_chunk(stck, min, max, 3))
 			ft_push_b(&stck->a, &stck->b);
 		else
 		{
