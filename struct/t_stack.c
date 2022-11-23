@@ -6,7 +6,7 @@
 /*   By: luntiet- <luntiet-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 10:36:48 by luntiet-          #+#    #+#             */
-/*   Updated: 2022/11/16 14:25:49 by luntiet-         ###   ########.fr       */
+/*   Updated: 2022/11/23 16:41:14 by luntiet-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,14 +27,16 @@ t_stack	*ft_stcknew(int content)
 
 int	ft_stcksize(t_stack *stck)
 {
-	int	count;
+	int		count;
+	t_stack	*tmp;
 
 	count = 0;
+	tmp = stck;
 	if (stck == NULL)
 		return (count);
-	while (stck)
+	while (tmp)
 	{
-		stck = stck->next;
+		tmp = tmp->next;
 		count++;
 	}
 	return (count);
@@ -53,7 +55,7 @@ t_stack	*ft_stcklast(t_stack *stck)
 
 void	ft_stckadd_back(t_stack **stck, t_stack *new)
 {
-	if (!*stck)
+	if (*stck == NULL)
 	{
 		*stck = new;
 		new->next = NULL;

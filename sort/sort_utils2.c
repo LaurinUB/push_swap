@@ -1,40 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   t_stacks.c                                         :+:      :+:    :+:   */
+/*   sort_utils2.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: luntiet- <luntiet-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/18 08:37:37 by luntiet           #+#    #+#             */
-/*   Updated: 2022/11/23 17:37:12 by luntiet-         ###   ########.fr       */
+/*   Created: 2022/11/23 11:11:59 by luntiet-          #+#    #+#             */
+/*   Updated: 2022/11/23 19:26:55 by luntiet-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-t_stacks	*ft_newstacks(t_stack *a)
+int	ft_first_top(t_stacks *stck, int max)
 {
-	t_stacks	*new;
-	t_stack		*b;
-	int			*arr;
-	int			i;
+	int	i;
+	int	size;
 
-	if (!a)
-		return (NULL);
-	b = NULL;
 	i = 0;
-	arr = malloc((ft_stcksize(a)) * sizeof(int));
-	new = malloc(sizeof(t_stacks));
-	if (!new || !arr)
-		return (NULL);
-	new->a = a;
-	new->b = b;
-	while (a)
-	{
-		arr[i] = a->index;
-		a = a->next;
+	size = ft_stcksize(stck->a);
+	while (!(stck->arr[i] <= max) && i < size)
 		i++;
-	}
-	new->arr = arr;
-	return (new);
+	return (stck->arr[i]);
+}
+
+int	ft_first_bot(t_stacks *stck, int max)
+{
+	int	i;
+
+	i = ft_stcksize(stck->a) - 1;
+	while (!(stck->arr[i] <= max) && i < 0)
+		i--;
+	return (stck->arr[i]);
+}
+
+int	ft_in_range(int index, int min, int max)
+{
+	return (index >= min && index <= max);
 }

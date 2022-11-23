@@ -6,7 +6,7 @@
 /*   By: luntiet- <luntiet-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 09:38:14 by luntiet-          #+#    #+#             */
-/*   Updated: 2022/11/22 17:21:58 by luntiet-         ###   ########.fr       */
+/*   Updated: 2022/11/23 19:26:27 by luntiet-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,10 @@ int			ft_stack_has_index(t_stack *stck, int nbr);
 //indexing
 void		ft_changearr(t_stacks *stck);
 void		ft_set_index(t_stack **stck);
+int			ft_in_range(int index, int min, int max);
 //sortcheck
+int			ft_first_top(t_stacks *stck, int max);
+int			ft_first_bot(t_stacks *stck, int max);
 int			ft_is_rev_sorted(t_stack *stck);
 int			ft_is_sorted(t_stack *stck);
 void		ft_sort(t_stacks *stck);

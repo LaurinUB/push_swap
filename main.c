@@ -6,7 +6,7 @@
 /*   By: luntiet- <luntiet-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 10:07:36 by luntiet-          #+#    #+#             */
-/*   Updated: 2022/11/22 17:44:08 by luntiet-         ###   ########.fr       */
+/*   Updated: 2022/11/23 14:52:52 by luntiet-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,6 +111,7 @@ int	main(int argc, char **argv)
 {
 	t_stacks	*stck;
 
+	stck = NULL;
 	if (argc < 1 || !ft_is_int(argv))
 	{
 		return (ft_putstr_fd("Error\n", 2), 0);
@@ -120,9 +121,7 @@ int	main(int argc, char **argv)
 		stck = ft_init_stack(argv, argc);
 		if (!stck)
 			return (0);
-		//ft_teststacks(&stck->a, &stck->b);
 		ft_sort(stck);
-		//ft_printindex(stck->b);
 	}
 	return (0);
 }
