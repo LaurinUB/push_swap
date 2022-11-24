@@ -6,7 +6,7 @@
 /*   By: luntiet- <luntiet-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 11:18:14 by luntiet-          #+#    #+#             */
-/*   Updated: 2022/11/24 17:58:10 by luntiet-         ###   ########.fr       */
+/*   Updated: 2022/11/24 19:10:30 by luntiet-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ void	ft_chunk(t_stacks *stck)
 	else if (ft_stcksize(stck->a) <= 500)
 		ft_chunk_sort(stck, 8);
 	else if (ft_stcksize(stck->a) <= 1000)
-		ft_chunk_sort(stck, 16);
+		ft_chunk_sort(stck, 12);
 	else
-		ft_chunk_sort(stck, 32);
+		ft_chunk_sort(stck, 18);
 }
 
 void	ft_changearr(t_stacks *stck, int option)

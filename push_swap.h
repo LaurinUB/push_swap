@@ -6,7 +6,7 @@
 /*   By: luntiet- <luntiet-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 09:38:14 by luntiet-          #+#    #+#             */
-/*   Updated: 2022/11/24 18:42:45 by luntiet-         ###   ########.fr       */
+/*   Updated: 2022/11/24 18:55:19 by luntiet-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ int			ft_is_sorted(t_stack *stck);
 void		ft_sort(t_stacks *stck);
 void		ft_chunk(t_stacks *stck);
 void		ft_chunk_sort(t_stacks *stck, int chunk);
-void		ft_sort_three(t_stack **a);
+void		ft_sort_three(t_stack **a, int max);
 void		ft_sort_five(t_stacks *stck);
 void		ft_counting_sort(t_stacks *stck);
 //printing
