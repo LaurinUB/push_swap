@@ -6,7 +6,7 @@
 /*   By: luntiet- <luntiet-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 10:07:36 by luntiet-          #+#    #+#             */
-/*   Updated: 2022/11/23 14:52:52 by luntiet-         ###   ########.fr       */
+/*   Updated: 2022/11/24 16:32:05 by luntiet-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,7 +119,7 @@ int	main(int argc, char **argv)
 	if (argc > 1)
 	{
 		stck = ft_init_stack(argv, argc);
-		if (!stck)
+		if (!stck || ft_is_sorted(stck->a))
 			return (0);
 		ft_sort(stck);
 	}

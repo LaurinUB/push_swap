@@ -6,7 +6,7 @@
 /*   By: luntiet- <luntiet-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 09:38:14 by luntiet-          #+#    #+#             */
-/*   Updated: 2022/11/23 19:26:27 by luntiet-         ###   ########.fr       */
+/*   Updated: 2022/11/24 18:42:45 by luntiet-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void		ft_stckadd_back(t_stack **stck, t_stack *new);
 void		ft_stckclear(t_stack **stck, void (*del)(void *));
 int			ft_stack_has_index(t_stack *stck, int nbr);
 //indexing
-void		ft_changearr(t_stacks *stck);
+void		ft_changearr(t_stacks *stck, int option);
 void		ft_set_index(t_stack **stck);
 int			ft_in_range(int index, int min, int max);
 //sortcheck
@@ -64,6 +64,7 @@ void		ft_sort(t_stacks *stck);
 void		ft_chunk(t_stacks *stck);
 void		ft_chunk_sort(t_stacks *stck, int chunk);
 void		ft_sort_three(t_stack **a);
+void		ft_sort_five(t_stacks *stck);
 void		ft_counting_sort(t_stacks *stck);
 //printing
 void		ft_teststacks(t_stack **astck, t_stack **bstck);

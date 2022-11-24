@@ -6,7 +6,7 @@
 /*   By: luntiet- <luntiet-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 15:40:11 by luntiet-          #+#    #+#             */
-/*   Updated: 2022/11/22 16:33:56 by luntiet-         ###   ########.fr       */
+/*   Updated: 2022/11/24 18:04:07 by luntiet-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,4 @@ void	ft_rotate(t_stack **astck, t_stack **bstck)
 		ft_stckadd_back(bstck, tmp);
 		ft_printf("rr\n");
 	}
-	else if (*astck && !*bstck)
-		ft_rotate_a(astck);
-	else if (!*astck && *bstck)
-		ft_rotate_b(bstck);
 }
