@@ -6,7 +6,7 @@
 /*   By: luntiet- <luntiet-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 11:18:14 by luntiet-          #+#    #+#             */
-/*   Updated: 2022/11/25 14:40:07 by luntiet-         ###   ########.fr       */
+/*   Updated: 2022/11/25 16:29:09 by luntiet-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,32 +26,6 @@ void	ft_chunk(t_stacks *stck)
 		ft_chunk_sort(stck, 12);
 	else
 		ft_chunk_sort(stck, 18);
-}
-
-void	ft_changearr(t_stacks *stck, int option)
-{
-	int		i;
-	t_stack	*tmp;
-
-	i = 0;
-	if (option == 1)
-	{
-		tmp = stck->a;
-		while (tmp)
-		{
-			stck->arr[i++] = tmp->index;
-			tmp = tmp->next;
-		}
-	}
-	if (option == 2)
-	{
-		tmp = stck->b;
-		while (tmp)
-		{
-			stck->arr[i++] = tmp->index;
-			tmp = tmp->next;
-		}
-	}
 }
 
 void	ft_sort_three(t_stack **a, int max)
@@ -92,10 +66,10 @@ void	ft_sort_five(t_stacks *stck)
 	max = ft_stcksize(stck->a) - 1;
 	while (ft_stcksize(stck->a) > 3 && !ft_is_sorted(stck->a))
 	{
-		if (ft_first_occurence(stck, min, 1) == 1)
+		if (ft_first_occurence(stck->a, min) == 1)
 			while (stck->a->index != min)
 				ft_rotate_a(&stck->a);
-		if (ft_first_occurence(stck, min, 1) == 2)
+		if (ft_first_occurence(stck->a, min) == 2)
 			while (stck->a->index != min)
 				ft_reverse_rotate_a(&stck->a);
 		if (!ft_is_sorted(stck->a))

@@ -6,32 +6,27 @@
 /*   By: luntiet- <luntiet-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 16:41:59 by luntiet-          #+#    #+#             */
-/*   Updated: 2022/11/25 14:39:18 by luntiet-         ###   ########.fr       */
+/*   Updated: 2022/11/25 16:28:37 by luntiet-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-int	ft_first_occurence(t_stacks *stck, int max, int option)
+int	ft_first_occurence(t_stack *stck, int max)
 {
-	int	pos;
-	int	mid;
-	int	size;
+	int		pos;
+	int		mid;
+	int		size;
+	t_stack	*tmp;
 
 	pos = 0;
-	if (option == 1)
+	size = ft_stcksize(stck);
+	mid = size / 2;
+	tmp = stck;
+	while (tmp->index != max)
 	{
-		size = ft_stcksize(stck->a);
-		mid = size / 2;
-		while (!(stck->arr[pos] <= max) && stck->arr[pos] < size)
-			pos++;
-	}
-	if (option == 2)
-	{
-		size = ft_stcksize(stck->b);
-		mid = size / 2;
-		while (stck->arr[pos] != max && stck->arr[pos] < size)
-			pos++;
+		tmp = tmp->next;
+		pos++;
 	}
 	if (pos > mid)
 		return (2);
@@ -51,7 +46,7 @@ int	ft_operate_calc(t_stacks *stck, int pivot, int max)
 	}
 	else
 		ft_push_b(&stck->a, &stck->b);
-	return (ft_changearr(stck, 1), 1);
+	return (1);
 }
 
 void	ft_sortback_to_a(t_stacks *stck)
@@ -59,22 +54,20 @@ void	ft_sortback_to_a(t_stacks *stck)
 	int	max;
 
 	max = ft_stcksize(stck->b) - 1;
-	ft_changearr(stck, 2);
 	while (max >= 0)
 	{
-		if (ft_first_occurence(stck, max, 2) == 1)
+		if (ft_first_occurence(stck->b, max) == 1)
 		{
 			while (stck->b->index != max)
 				ft_rotate_b(&stck->b);
 			ft_push_a(&stck->a, &stck->b);
 		}
-		else if (ft_first_occurence(stck, max, 2) == 2)
+		else if (ft_first_occurence(stck->b, max) == 2)
 		{
 			while (stck->b->index != max)
 				ft_reverse_rotate_b(&stck->b);
 			ft_push_a(&stck->a, &stck->b);
 		}
-		ft_changearr(stck, 2);
 		max--;
 	}
 }
