@@ -6,7 +6,7 @@
 /*   By: luntiet- <luntiet-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 10:07:36 by luntiet-          #+#    #+#             */
-/*   Updated: 2022/11/25 16:59:10 by luntiet-         ###   ########.fr       */
+/*   Updated: 2022/11/25 17:50:06 by luntiet-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,11 +79,12 @@ t_stack	*ft_fill_from_string(t_stack *tmp, char **argv)
 			ft_stckadd_back(&a, tmp);
 			i++;
 		}
-		return (a);
+		free(tmp);
+		return (ft_free_split(str), a);
 	}
 }
 
-t_stacks	*ft_init_stack(char **argv, int argc)
+t_stacks	*ft_init_stack(char **argv, int argc, t_stacks *stck)
 {
 	int			i;
 	t_stack		*a;
@@ -108,7 +109,9 @@ t_stacks	*ft_init_stack(char **argv, int argc)
 		}
 	}
 	ft_set_index(&a);
-	return (ft_newstacks(a));
+	stck = ft_newstacks(a);
+	free(tmp);
+	return (stck);
 }
 
 int	main(int argc, char **argv)
@@ -122,7 +125,7 @@ int	main(int argc, char **argv)
 	}
 	if (argc > 1)
 	{
-		stck = ft_init_stack(argv, argc);
+		stck = ft_init_stack(argv, argc, stck);
 		if (!stck || ft_is_sorted(stck->a))
 			return (free(stck), 0);
 		ft_sort(stck);
