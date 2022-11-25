@@ -6,7 +6,7 @@
 /*   By: luntiet- <luntiet-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 09:38:14 by luntiet-          #+#    #+#             */
-/*   Updated: 2022/11/25 16:28:57 by luntiet-         ###   ########.fr       */
+/*   Updated: 2022/11/25 16:53:52 by luntiet-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ typedef struct s_stacks
 {
 	struct s_stack	*a;
 	struct s_stack	*b;
-	int				*arr;
 }					t_stacks;
 
 //swapper

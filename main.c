@@ -6,7 +6,7 @@
 /*   By: luntiet- <luntiet-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 10:07:36 by luntiet-          #+#    #+#             */
-/*   Updated: 2022/11/25 14:37:30 by luntiet-         ###   ########.fr       */
+/*   Updated: 2022/11/25 16:59:10 by luntiet-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,8 +98,7 @@ t_stacks	*ft_init_stack(char **argv, int argc)
 		i = 1;
 		while (i < argc)
 		{
-			if (!ft_range(ft_atol(argv[i]))
-				|| ft_has_double(a, ft_atoi(argv[i])))
+			if (!ft_range(ft_atol(argv[i])) || ft_has_double(a, ft_atoi(argv[i])))
 				return (ft_putstr_fd("Error\n", 2), NULL);
 			tmp = ft_stcknew(ft_atoi(argv[i]));
 			if (!tmp)
@@ -109,7 +108,7 @@ t_stacks	*ft_init_stack(char **argv, int argc)
 		}
 	}
 	ft_set_index(&a);
-	return (free(tmp), ft_newstacks(a));
+	return (ft_newstacks(a));
 }
 
 int	main(int argc, char **argv)
