@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luntiet <luntiet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: luntiet- <luntiet-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 11:18:14 by luntiet-          #+#    #+#             */
-/*   Updated: 2022/11/24 21:38:10 by luntiet          ###   ########.fr       */
+/*   Updated: 2022/11/25 14:40:07 by luntiet-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,15 +93,11 @@ void	ft_sort_five(t_stacks *stck)
 	while (ft_stcksize(stck->a) > 3 && !ft_is_sorted(stck->a))
 	{
 		if (ft_first_occurence(stck, min, 1) == 1)
-		{
 			while (stck->a->index != min)
 				ft_rotate_a(&stck->a);
-		}
 		if (ft_first_occurence(stck, min, 1) == 2)
-		{
 			while (stck->a->index != min)
 				ft_reverse_rotate_a(&stck->a);
-		}
 		if (!ft_is_sorted(stck->a))
 			ft_push_b(&stck->a, &stck->b);
 		min++;

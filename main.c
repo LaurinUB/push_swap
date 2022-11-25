@@ -6,7 +6,7 @@
 /*   By: luntiet- <luntiet-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 10:07:36 by luntiet-          #+#    #+#             */
-/*   Updated: 2022/11/24 16:32:05 by luntiet-         ###   ########.fr       */
+/*   Updated: 2022/11/25 14:37:30 by luntiet-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,19 +61,21 @@ t_stack	*ft_fill_from_string(t_stack *tmp, char **argv)
 	t_stack	*a;
 
 	i = 0;
-	str = ft_split(argv[1], ' ');
-	if (!str)
-		return (NULL);
 	a = NULL;
 	if (!argv)
 		return (ft_putstr_fd("Error\n", 2), NULL);
 	else
 	{
+		str = ft_split(argv[1], ' ');
+		if (!str)
+			return (NULL);
 		while (str[i])
 		{
-			if (ft_has_double(a, ft_atoi(str[i])))
-				return (ft_putstr_fd("Error\n", 2), NULL);
+			if (!ft_range(ft_atol(str[i])) || ft_has_double(a, ft_atoi(str[i])))
+				return (ft_stckclear(&a), ft_putstr_fd("Error\n", 2), NULL);
 			tmp = ft_stcknew(ft_atoi(str[i]));
+			if (!tmp)
+				return (ft_stckclear(&a), NULL);
 			ft_stckadd_back(&a, tmp);
 			i++;
 		}
@@ -96,15 +98,18 @@ t_stacks	*ft_init_stack(char **argv, int argc)
 		i = 1;
 		while (i < argc)
 		{
-			if (ft_has_double(a, ft_atoi(argv[i])))
+			if (!ft_range(ft_atol(argv[i]))
+				|| ft_has_double(a, ft_atoi(argv[i])))
 				return (ft_putstr_fd("Error\n", 2), NULL);
 			tmp = ft_stcknew(ft_atoi(argv[i]));
+			if (!tmp)
+				return (ft_stckclear(&a), NULL);
 			ft_stckadd_back(&a, tmp);
 			i++;
 		}
 	}
 	ft_set_index(&a);
-	return (ft_newstacks(a));
+	return (free(tmp), ft_newstacks(a));
 }
 
 int	main(int argc, char **argv)
@@ -120,8 +125,10 @@ int	main(int argc, char **argv)
 	{
 		stck = ft_init_stack(argv, argc);
 		if (!stck || ft_is_sorted(stck->a))
-			return (0);
+			return (free(stck), 0);
 		ft_sort(stck);
+		free(stck);
 	}
+	//system("leaks push_swap");
 	return (0);
 }

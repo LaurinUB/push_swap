@@ -6,7 +6,7 @@
 /*   By: luntiet- <luntiet-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 10:36:48 by luntiet-          #+#    #+#             */
-/*   Updated: 2022/11/23 16:41:14 by luntiet-         ###   ########.fr       */
+/*   Updated: 2022/11/25 14:40:50 by luntiet-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,9 @@ int	ft_stcksize(t_stack *stck)
 	t_stack	*tmp;
 
 	count = 0;
-	tmp = stck;
-	if (stck == NULL)
+	if (!stck)
 		return (count);
+	tmp = stck;
 	while (tmp)
 	{
 		tmp = tmp->next;
@@ -72,23 +72,23 @@ void	ft_stckadd_back(t_stack **stck, t_stack *new)
 	}
 }
 
-void	ft_stckclear(t_stack **stck, void (*del)(void *))
+void	ft_stckclear(t_stack **stck)
 {
 	t_stack	*tmp;
 	t_stack	*dl;
 
 	if (!*stck)
 		stck = NULL;
-	if (del && stck && *stck)
+	if (stck && *stck)
 	{
 		tmp = *stck;
 		dl = tmp;
 		while (tmp)
 		{
 			tmp = tmp->next;
-			del(dl);
+			free(dl);
 			dl = tmp;
 		}
-		*stck = NULL;
+		free(stck);
 	}
 }

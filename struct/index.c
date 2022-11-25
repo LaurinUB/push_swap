@@ -6,13 +6,13 @@
 /*   By: luntiet- <luntiet-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 11:23:47 by luntiet-          #+#    #+#             */
-/*   Updated: 2022/11/14 13:45:13 by luntiet-         ###   ########.fr       */
+/*   Updated: 2022/11/25 14:19:59 by luntiet-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-static t_stack	*ft_next_min(t_stack **stck)
+t_stack	*ft_next_min(t_stack **stck)
 {
 	t_stack	*min;
 	t_stack	*elmnt;
@@ -20,6 +20,8 @@ static t_stack	*ft_next_min(t_stack **stck)
 
 	has_min = 0;
 	min = NULL;
+	if (!*stck || !stck)
+		return (NULL);
 	elmnt = *stck;
 	while (elmnt)
 	{
@@ -45,4 +47,35 @@ void	ft_set_index(t_stack **stck)
 		elmnt->index = index++;
 		elmnt = ft_next_min(stck);
 	}
+}
+
+long	ft_atol(char *str)
+{
+	long	n;
+	int		sign;
+
+	n = 0;
+	sign = 1;
+	if (!str)
+		return (0);
+	while (*str == ' ' || *str == '\t' || *str == '\r' \
+		|| *str == '\n' || *str == '\v' || *str == '\f')
+		str++;
+	if ((*str == '+' || *str == '-'))
+	{
+		if (*str == '-')
+			sign *= -1;
+		str++;
+	}
+	while (ft_isdigit(*str))
+	{
+		n = 10 * n + (*str - '0');
+		str++;
+	}
+	return (n * sign);
+}
+
+int	ft_range(long nbr)
+{
+	return (nbr <= INT_MAX && nbr >= INT_MIN);
 }
