@@ -6,7 +6,7 @@
 /*   By: luntiet- <luntiet-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 10:36:48 by luntiet-          #+#    #+#             */
-/*   Updated: 2022/11/25 14:40:50 by luntiet-         ###   ########.fr       */
+/*   Updated: 2022/11/26 15:41:49 by luntiet-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,23 +72,22 @@ void	ft_stckadd_back(t_stack **stck, t_stack *new)
 	}
 }
 
-void	ft_stckclear(t_stack **stck)
+void	ft_stckclear(t_stack *stck)
 {
 	t_stack	*tmp;
 	t_stack	*dl;
 
-	if (!*stck)
+	if (!stck)
 		stck = NULL;
-	if (stck && *stck)
+	if (stck)
 	{
-		tmp = *stck;
-		dl = tmp;
+		tmp = stck;
 		while (tmp)
 		{
+			dl = tmp;
 			tmp = tmp->next;
 			free(dl);
-			dl = tmp;
 		}
-		free(stck);
+		stck = NULL;
 	}
 }

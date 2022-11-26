@@ -5,3 +5,4 @@ libft/
 push_swap
 .vscode
 push_swap_tester
+LeakSanitizer

@@ -6,7 +6,7 @@
 /*   By: luntiet- <luntiet-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 10:07:36 by luntiet-          #+#    #+#             */
-/*   Updated: 2022/11/26 14:47:42 by luntiet-         ###   ########.fr       */
+/*   Updated: 2022/11/26 16:10:28 by luntiet-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,13 +70,20 @@ t_stack	*ft_fill_from_string(t_stack *tmp, char **argv, t_stack *a)
 		while (str[i])
 		{
 			if (!ft_range(ft_atol(str[i])) || ft_has_double(a, ft_atoi(str[i])))
-				return (ft_stckclear(&a), ft_putstr_fd("Error\n", 2), NULL);
+				return (ft_stckclear(a), ft_putstr_fd("Error\n", 2), NULL);
 			tmp = ft_stcknew(ft_atoi(str[i]));
 			if (!tmp)
-				return (ft_stckclear(&a), NULL);
+				return (ft_stckclear(a), NULL);
 			ft_stckadd_back(&a, tmp);
 			i++;
 		}
+		i = 0;
+		while (str[i])
+		{
+			free(str[i]);
+			i++;
+		}
+		free(str);
 		return (a);
 	}
 }
@@ -98,7 +105,7 @@ t_stacks	*ft_init_stack(char **argv, int argc, t_stacks *stck, t_stack *a)
 				return (ft_putstr_fd("Error\n", 2), NULL);
 			tmp = ft_stcknew(ft_atoi(argv[i]));
 			if (!tmp)
-				return (ft_stckclear(&a), NULL);
+				return (ft_stckclear(a), NULL);
 			ft_stckadd_back(&a, tmp);
 			i++;
 		}
@@ -128,6 +135,7 @@ int	main(int argc, char **argv)
 		ft_sort(stck);
 		free(stck);
 	}
+	//TODO FINDE WHERE THE LIST TAILING IS LOST AT OPERATIONS YOU MUNK
 	//system("leaks push_swap");
 	return (0);
 }

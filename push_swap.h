@@ -6,7 +6,7 @@
 /*   By: luntiet- <luntiet-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 09:38:14 by luntiet-          #+#    #+#             */
-/*   Updated: 2022/11/25 17:29:33 by luntiet-         ###   ########.fr       */
+/*   Updated: 2022/11/26 15:37:27 by luntiet-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ t_stack		*ft_stcknew(int content);
 int			ft_stcksize(t_stack *stck);
 t_stack		*ft_stcklast(t_stack *stck);
 void		ft_stckadd_back(t_stack **stck, t_stack *new);
-void		ft_stckclear(t_stack **stck);
+void		ft_stckclear(t_stack *stck);
 int			ft_stack_has_index(t_stack *stck, int nbr);
 void		ft_free(t_stacks *stck);
 //indexing

@@ -6,7 +6,7 @@
 /*   By: luntiet- <luntiet-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 11:18:14 by luntiet-          #+#    #+#             */
-/*   Updated: 2022/11/25 16:29:09 by luntiet-         ###   ########.fr       */
+/*   Updated: 2022/11/26 15:16:27 by luntiet-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	ft_chunk(t_stacks *stck)
 {
 	if (ft_stcksize(stck->a) <= 25)
-		ft_counting_sort(stck);
+		ft_chunk_sort(stck, 1);
 	else if (ft_stcksize(stck->a) <= 50)
 		ft_chunk_sort(stck, 2);
 	else if (ft_stcksize(stck->a) <= 100)
@@ -84,20 +84,4 @@ void	ft_sort_five(t_stacks *stck)
 	{
 		ft_push_a(&stck->a, &stck->b);
 	}
-}
-
-void	ft_counting_sort(t_stacks *stck)
-{
-	int	nbr;
-
-	nbr = 0;
-	while (nbr < 10 && stck->a)
-	{
-		while (!(stck->a->index == nbr))
-			ft_rotate_a(&stck->a);
-		ft_push_b(&stck->a, &stck->b);
-		nbr++;
-	}
-	while (stck->b)
-		ft_push_a(&stck->a, &stck->b);
 }
