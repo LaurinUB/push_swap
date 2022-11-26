@@ -6,7 +6,7 @@
 /*   By: luntiet- <luntiet-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 16:41:59 by luntiet-          #+#    #+#             */
-/*   Updated: 2022/11/25 16:28:37 by luntiet-         ###   ########.fr       */
+/*   Updated: 2022/11/26 15:06:58 by luntiet-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,11 @@ void	ft_chunk_sort(t_stacks *stck, int chunk)
 
 void	ft_sort(t_stacks *stck)
 {
-	if (!(ft_stcksize(stck->a) <= 1))
+	if (ft_stcksize(stck->a) <= 1)
+	{
+		ft_putstr_fd("Error\n", 2);
+	}
+	else
 	{
 		if (ft_stcksize(stck->a) == 2)
 		{
@@ -111,4 +115,5 @@ void	ft_sort(t_stacks *stck)
 		else
 			ft_chunk(stck);
 	}
+
 }

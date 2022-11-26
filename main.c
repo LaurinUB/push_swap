@@ -6,7 +6,7 @@
 /*   By: luntiet- <luntiet-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 10:07:36 by luntiet-          #+#    #+#             */
-/*   Updated: 2022/11/25 17:50:06 by luntiet-         ###   ########.fr       */
+/*   Updated: 2022/11/26 14:47:42 by luntiet-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,14 +54,12 @@ int	ft_has_double(t_stack *stck, int nbr)
 	return (0);
 }
 
-t_stack	*ft_fill_from_string(t_stack *tmp, char **argv)
+t_stack	*ft_fill_from_string(t_stack *tmp, char **argv, t_stack *a)
 {
 	int		i;
 	char	**str;
-	t_stack	*a;
 
 	i = 0;
-	a = NULL;
 	if (!argv)
 		return (ft_putstr_fd("Error\n", 2), NULL);
 	else
@@ -79,21 +77,18 @@ t_stack	*ft_fill_from_string(t_stack *tmp, char **argv)
 			ft_stckadd_back(&a, tmp);
 			i++;
 		}
-		free(tmp);
-		return (ft_free_split(str), a);
+		return (a);
 	}
 }
 
-t_stacks	*ft_init_stack(char **argv, int argc, t_stacks *stck)
+t_stacks	*ft_init_stack(char **argv, int argc, t_stacks *stck, t_stack *a)
 {
 	int			i;
-	t_stack		*a;
 	t_stack		*tmp;
 
 	tmp = NULL;
-	a = NULL;
 	if (argc == 2)
-		a = ft_fill_from_string(tmp, argv);
+		a = ft_fill_from_string(tmp, argv, a);
 	else
 	{
 		i = 1;
@@ -117,15 +112,17 @@ t_stacks	*ft_init_stack(char **argv, int argc, t_stacks *stck)
 int	main(int argc, char **argv)
 {
 	t_stacks	*stck;
+	t_stack		*a;
 
 	stck = NULL;
+	a = NULL;
 	if (argc < 1 || !ft_is_int(argv))
 	{
 		return (ft_putstr_fd("Error\n", 2), 0);
 	}
 	if (argc > 1)
 	{
-		stck = ft_init_stack(argv, argc, stck);
+		stck = ft_init_stack(argv, argc, stck, a);
 		if (!stck || ft_is_sorted(stck->a))
 			return (free(stck), 0);
 		ft_sort(stck);
