@@ -6,11 +6,11 @@
 /*   By: luntiet <luntiet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 10:07:36 by luntiet-          #+#    #+#             */
-/*   Updated: 2022/11/27 10:23:48 by luntiet          ###   ########.fr       */
+/*   Updated: 2022/11/27 10:52:43 by luntiet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
 int	ft_is_int(char **argv)
 {
@@ -131,7 +131,5 @@ int	main(int argc, char **argv)
 		ft_stckclear(stck->a);
 		free(stck);
 	}
-	//TODO FINDE WHERE THE LIST TAILING IS LOST AT OPERATIONS YOU MUNK
-	//system("leaks push_swap");
 	return (0);
 }

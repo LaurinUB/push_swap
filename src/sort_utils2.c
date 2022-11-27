@@ -6,7 +6,7 @@
 /*   By: luntiet <luntiet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 11:11:59 by luntiet-          #+#    #+#             */
-/*   Updated: 2022/11/27 09:43:58 by luntiet          ###   ########.fr       */
+/*   Updated: 2022/11/27 10:48:46 by luntiet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,6 @@ int	ft_first_top(t_stacks *stck, int max)
 		tmp = tmp->next;
 	}
 	return (tmp->index);
-}
-
-void	ft_free(t_stacks *stck)
-{
-	ft_stckclear(stck->a);
-	free(stck);
 }
 
 void	ft_splitfree(char **str)

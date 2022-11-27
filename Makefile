@@ -6,7 +6,7 @@
 #    By: luntiet <luntiet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/08 10:12:23 by luntiet-          #+#    #+#              #
-#    Updated: 2022/11/27 09:36:08 by luntiet          ###   ########.fr        #
+#    Updated: 2022/11/27 10:54:22 by luntiet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,17 +16,19 @@ CFLAGS = -Wall -Werror -Wextra
 
 NAME = push_swap
 
-SRC = push_swap.c ./operations/ft_swap.c \
-		./operations/ft_push.c \
-		./operations/ft_rotate.c \
-		./operations/ft_reverse_rotate.c \
-		./struct/t_stack.c \
-		./struct/t_stack_utils.c \
-		./struct/t_stacks.c \
-		./struct/index.c \
-		./sort/sort.c \
-		./sort/sort_utils.c \
-		./sort/sort_utils2.c
+SRC = ./src/push_swap.c \
+		./src/utils.c \
+		./src/ft_swap.c \
+		./src/ft_push.c \
+		./src/ft_rotate.c \
+		./src/ft_reverse_rotate.c \
+		./src/t_stack.c \
+		./src/t_stack_utils.c \
+		./src/t_stacks.c \
+		./src/index.c \
+		./src/sort.c \
+		./src/sort_utils.c \
+		./src/sort_utils2.c
 
 OBJ = $(SRC:.c=.o)
 
