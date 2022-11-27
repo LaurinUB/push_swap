@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luntiet- <luntiet-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: luntiet <luntiet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 11:18:14 by luntiet-          #+#    #+#             */
-/*   Updated: 2022/11/26 15:16:27 by luntiet-         ###   ########.fr       */
+/*   Updated: 2022/11/26 23:46:34 by luntiet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,29 +30,26 @@ void	ft_chunk(t_stacks *stck)
 
 void	ft_sort_three(t_stack **a, int max)
 {
-	t_stack	*tmp;
-
-	tmp = *a;
-	if (!ft_is_sorted(tmp))
+	if (!ft_is_sorted((*a)))
 	{
-		if (ft_is_rev_sorted(tmp))
+		if (ft_is_rev_sorted((*a)))
 		{
-			ft_rotate_a(&tmp);
-			ft_swap_a(&tmp);
+			ft_rotate_a(&(*a));
+			ft_swap_a(&(*a));
 		}
-		else if (tmp->index == max - 2 && ft_stcklast(tmp)->index == max - 1)
+		else if ((*a)->index == max - 2 && ft_stcklast((*a))->index == max - 1)
 		{
-			ft_reverse_rotate_a(&tmp);
-			ft_swap_a(&tmp);
+			ft_reverse_rotate_a(&(*a));
+			ft_swap_a(&(*a));
 		}
-		else if (tmp->index == max && ft_stcklast(tmp)->index == max - 1)
-			ft_rotate_a(&tmp);
-		else if (tmp->index == max - 1)
+		else if ((*a)->index == max && ft_stcklast((*a))->index == max - 1)
+			ft_rotate_a(&(*a));
+		else if ((*a)->index == max - 1)
 		{
-			if (ft_stcklast(tmp)->index == max - 2)
-				ft_reverse_rotate_a(&tmp);
+			if (ft_stcklast((*a))->index == max - 2)
+				ft_reverse_rotate_a(&(*a));
 			else
-				ft_swap_a(&tmp);
+				ft_swap_a(&(*a));
 		}
 	}
 }

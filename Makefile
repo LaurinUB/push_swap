@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: luntiet- <luntiet-@student.42.fr>          +#+  +:+       +#+         #
+#    By: luntiet <luntiet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/08 10:12:23 by luntiet-          #+#    #+#              #
-#    Updated: 2022/11/26 15:26:55 by luntiet-         ###   ########.fr        #
+#    Updated: 2022/11/27 09:36:08 by luntiet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ CFLAGS = -Wall -Werror -Wextra
 
 NAME = push_swap
 
-SRC = main.c ./operations/ft_swap.c \
+SRC = push_swap.c ./operations/ft_swap.c \
 		./operations/ft_push.c \
 		./operations/ft_rotate.c \
 		./operations/ft_reverse_rotate.c \
@@ -41,11 +41,11 @@ lsan: fclean $(LSANLIB)
 lsan: all
 
 $(LSANLIB):
-	if [ ! -d "LeakSanitizer" ]; then git clone https://github.com/mhahnFr/LeakSanitizer.git; fi
-	$(MAKE) -C LeakSanitizer
+	@if [ ! -d "LeakSanitizer" ]; then git clone https://github.com/mhahnFr/LeakSanitizer.git; fi
+	@$(MAKE) -C LeakSanitizer
 
 $(NAME): $(LIBFT) $(OBJ)
-	$(CC) $(LINK_FLAGS) $(OBJ) $(LIBFT) -o $(NAME)
+	@$(CC) $(LINK_FLAGS) $(OBJ) $(LIBFT) -o $(NAME)
 
 $(LIBFT):
 	@git clone https://github.com/LaurinUB/libft
@@ -54,10 +54,6 @@ $(LIBFT):
 debug : CFLAGS += -g
 
 debug : re
-
-san : CFLAGS +=  -g -fsanitize=address
-
-san : re
 
 clean:
 	@rm -rf $(OBJ)

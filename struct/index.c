@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   index.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luntiet- <luntiet-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: luntiet <luntiet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 11:23:47 by luntiet-          #+#    #+#             */
-/*   Updated: 2022/11/25 14:19:59 by luntiet-         ###   ########.fr       */
+/*   Updated: 2022/11/27 10:12:26 by luntiet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,18 @@ long	ft_atol(char *str)
 	return (n * sign);
 }
 
-int	ft_range(long nbr)
+int	ft_range(char **argv)
 {
-	return (nbr <= INT_MAX && nbr >= INT_MIN);
+	int	i;
+
+	i = 0;
+	if (!*argv)
+		return (0);
+	while (argv[i])
+	{
+		if (ft_atol(argv[i]) > INT_MAX || ft_atol(argv[i]) < INT_MIN)
+			return (0);
+		i++;
+	}
+	return (1);
 }

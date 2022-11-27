@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luntiet- <luntiet-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: luntiet <luntiet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 09:38:14 by luntiet-          #+#    #+#             */
-/*   Updated: 2022/11/26 15:37:27 by luntiet-         ###   ########.fr       */
+/*   Updated: 2022/11/27 10:13:32 by luntiet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,6 @@ t_stack		*ft_stcklast(t_stack *stck);
 void		ft_stckadd_back(t_stack **stck, t_stack *new);
 void		ft_stckclear(t_stack *stck);
 int			ft_stack_has_index(t_stack *stck, int nbr);
-void		ft_free(t_stacks *stck);
 //indexing
 void		ft_set_index(t_stack **stck);
 int			ft_in_range(int index, int min, int max);
@@ -68,6 +67,6 @@ void		ft_counting_sort(t_stacks *stck);
 int			ft_first_occurence(t_stack *stck, int max);
 //libftvariants
 long		ft_atol(char *str);
-int			ft_range(long nbr);
-void		ft_free_split(char **str);
+int			ft_range(char **str);
+void		ft_splitfree(char **str);
 #endif

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luntiet- <luntiet-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: luntiet <luntiet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 10:07:36 by luntiet-          #+#    #+#             */
-/*   Updated: 2022/11/26 16:10:28 by luntiet-         ###   ########.fr       */
+/*   Updated: 2022/11/27 10:23:48 by luntiet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	ft_is_int(char **argv)
 				j++;
 			else if (argv[i][j] == '-' && ft_isdigit(argv[i][j + 1]))
 				j++;
-			else if (argv[i][j] == ' ')
+			else if (argv[1][j] == ' ')
 				j++;
 			else
 				return (0);
@@ -60,7 +60,7 @@ t_stack	*ft_fill_from_string(t_stack *tmp, char **argv, t_stack *a)
 	char	**str;
 
 	i = 0;
-	if (!argv)
+	if (!argv || !*argv || !**argv)
 		return (ft_putstr_fd("Error\n", 2), NULL);
 	else
 	{
@@ -69,21 +69,15 @@ t_stack	*ft_fill_from_string(t_stack *tmp, char **argv, t_stack *a)
 			return (NULL);
 		while (str[i])
 		{
-			if (!ft_range(ft_atol(str[i])) || ft_has_double(a, ft_atoi(str[i])))
-				return (ft_stckclear(a), ft_putstr_fd("Error\n", 2), NULL);
+			if (ft_has_double(a, ft_atoi(str[i])))
+				return (ft_splitfree(str), ft_stckclear(a), ft_putstr_fd("Error\n", 2), NULL);
 			tmp = ft_stcknew(ft_atoi(str[i]));
 			if (!tmp)
 				return (ft_stckclear(a), NULL);
 			ft_stckadd_back(&a, tmp);
 			i++;
 		}
-		i = 0;
-		while (str[i])
-		{
-			free(str[i]);
-			i++;
-		}
-		free(str);
+		ft_splitfree(str);
 		return (a);
 	}
 }
@@ -94,15 +88,15 @@ t_stacks	*ft_init_stack(char **argv, int argc, t_stacks *stck, t_stack *a)
 	t_stack		*tmp;
 
 	tmp = NULL;
-	if (argc == 2)
+	if (argc == 2 && argv[1])
 		a = ft_fill_from_string(tmp, argv, a);
 	else
 	{
 		i = 1;
-		while (i < argc)
+		while (i < argc && argv[i])
 		{
-			if (!ft_range(ft_atol(argv[i])) || ft_has_double(a, ft_atoi(argv[i])))
-				return (ft_putstr_fd("Error\n", 2), NULL);
+			if (ft_has_double(a, ft_atoi(argv[i])))
+				return (ft_stckclear(a), ft_putstr_fd("Error\n", 2), NULL);
 			tmp = ft_stcknew(ft_atoi(argv[i]));
 			if (!tmp)
 				return (ft_stckclear(a), NULL);
@@ -112,7 +106,6 @@ t_stacks	*ft_init_stack(char **argv, int argc, t_stacks *stck, t_stack *a)
 	}
 	ft_set_index(&a);
 	stck = ft_newstacks(a);
-	free(tmp);
 	return (stck);
 }
 
@@ -123,16 +116,19 @@ int	main(int argc, char **argv)
 
 	stck = NULL;
 	a = NULL;
-	if (argc < 1 || !ft_is_int(argv))
+	if (!argv || argc <= 1 || !ft_is_int(argv) || !ft_range(argv))
 	{
 		return (ft_putstr_fd("Error\n", 2), 0);
 	}
-	if (argc > 1)
+	if (argc > 1 && *argv[1])
 	{
 		stck = ft_init_stack(argv, argc, stck, a);
-		if (!stck || ft_is_sorted(stck->a))
+		if (!stck)
 			return (free(stck), 0);
+		if (ft_is_sorted(stck->a))
+			return (free(stck), ft_stckclear(stck->a), 0);
 		ft_sort(stck);
+		ft_stckclear(stck->a);
 		free(stck);
 	}
 	//TODO FINDE WHERE THE LIST TAILING IS LOST AT OPERATIONS YOU MUNK

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort_utils2.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luntiet- <luntiet-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: luntiet <luntiet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 11:11:59 by luntiet-          #+#    #+#             */
-/*   Updated: 2022/11/26 15:39:08 by luntiet-         ###   ########.fr       */
+/*   Updated: 2022/11/27 09:43:58 by luntiet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	ft_free(t_stacks *stck)
 	free(stck);
 }
 
-void	ft_free_split(char **str)
+void	ft_splitfree(char **str)
 {
 	int	i;
 
