@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luntiet <luntiet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: luntiet- <luntiet-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 10:07:36 by luntiet-          #+#    #+#             */
-/*   Updated: 2022/11/27 10:52:43 by luntiet          ###   ########.fr       */
+/*   Updated: 2022/11/28 09:51:52 by luntiet-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,15 +70,16 @@ t_stack	*ft_fill_from_string(t_stack *tmp, char **argv, t_stack *a)
 		while (str[i])
 		{
 			if (ft_has_double(a, ft_atoi(str[i])))
-				return (ft_splitfree(str), ft_stckclear(a), ft_putstr_fd("Error\n", 2), NULL);
+				return (ft_splitfree(str),
+					ft_stckclear(a),
+					ft_putstr_fd("Error\n", 2), NULL);
 			tmp = ft_stcknew(ft_atoi(str[i]));
 			if (!tmp)
 				return (ft_stckclear(a), NULL);
 			ft_stckadd_back(&a, tmp);
 			i++;
 		}
-		ft_splitfree(str);
-		return (a);
+		return (ft_splitfree(str), a);
 	}
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luntiet <luntiet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: luntiet- <luntiet-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 11:18:14 by luntiet-          #+#    #+#             */
-/*   Updated: 2022/11/26 23:46:34 by luntiet          ###   ########.fr       */
+/*   Updated: 2022/11/28 09:58:08 by luntiet-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,4 +81,16 @@ void	ft_sort_five(t_stacks *stck)
 	{
 		ft_push_a(&stck->a, &stck->b);
 	}
+}
+
+int	ft_first_top(t_stacks *stck, int max)
+{
+	t_stack	*tmp;
+
+	tmp = stck->a;
+	while (!(tmp->index <= max))
+	{
+		tmp = tmp->next;
+	}
+	return (tmp->index);
 }

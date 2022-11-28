@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   index.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luntiet <luntiet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: luntiet- <luntiet-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 11:23:47 by luntiet-          #+#    #+#             */
-/*   Updated: 2022/11/27 10:49:45 by luntiet          ###   ########.fr       */
+/*   Updated: 2022/11/28 09:46:31 by luntiet-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,5 +48,3 @@ void	ft_set_index(t_stack **stck)
 		elmnt = ft_next_min(stck);
 	}
 }
-
-

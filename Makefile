@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: luntiet <luntiet@student.42.fr>            +#+  +:+       +#+         #
+#    By: luntiet- <luntiet-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/08 10:12:23 by luntiet-          #+#    #+#              #
-#    Updated: 2022/11/27 10:54:22 by luntiet          ###   ########.fr        #
+#    Updated: 2022/11/28 09:58:44 by luntiet-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,8 +27,7 @@ SRC = ./src/push_swap.c \
 		./src/t_stacks.c \
 		./src/index.c \
 		./src/sort.c \
-		./src/sort_utils.c \
-		./src/sort_utils2.c
+		./src/sort_utils.c
 
 OBJ = $(SRC:.c=.o)
 
