@@ -6,7 +6,7 @@
 /*   By: luntiet- <luntiet-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 10:07:36 by luntiet-          #+#    #+#             */
-/*   Updated: 2022/11/28 09:51:52 by luntiet-         ###   ########.fr       */
+/*   Updated: 2022/11/28 11:11:33 by luntiet-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,7 +117,7 @@ int	main(int argc, char **argv)
 
 	stck = NULL;
 	a = NULL;
-	if (!argv || argc <= 1 || !ft_is_int(argv) || !ft_range(argv))
+	if (!argv || !ft_is_int(argv) || !ft_range(argv))
 	{
 		return (ft_putstr_fd("Error\n", 2), 0);
 	}

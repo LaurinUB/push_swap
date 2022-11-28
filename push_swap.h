@@ -6,7 +6,7 @@
 /*   By: luntiet- <luntiet-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 09:38:14 by luntiet-          #+#    #+#             */
-/*   Updated: 2022/11/28 09:56:50 by luntiet-         ###   ########.fr       */
+/*   Updated: 2022/11/28 11:08:04 by luntiet-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,6 @@ void		ft_stckadd_back(t_stack **stck, t_stack *new);
 void		ft_stckclear(t_stack *stck);
 //indexing
 void		ft_set_index(t_stack **stck);
-int			ft_in_range(int index, int min, int max);
 //sortcheck
 int			ft_first_top(t_stacks *stck, int max);
 int			ft_first_bot(t_stacks *stck, int max);
