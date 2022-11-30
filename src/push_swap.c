@@ -6,7 +6,7 @@
 /*   By: luntiet- <luntiet-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 10:07:36 by luntiet-          #+#    #+#             */
-/*   Updated: 2022/11/28 11:11:33 by luntiet-         ###   ########.fr       */
+/*   Updated: 2022/11/30 16:16:06 by luntiet-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,24 +15,14 @@
 int	ft_is_int(char **argv)
 {
 	int	i;
-	int	j;
 
 	i = 1;
-	j = 0;
 	while (argv[i])
 	{
-		while (argv[i][j])
-		{
-			if (ft_isdigit(argv[i][j]))
-				j++;
-			else if (argv[i][j] == '-' && ft_isdigit(argv[i][j + 1]))
-				j++;
-			else if (argv[1][j] == ' ')
-				j++;
-			else
-				return (0);
-		}
-		j = 0;
+		if (!argv[i] || !argv[i][0])
+			return (0);
+		if (!ft_check(argv[i], 0))
+			return (0);
 		i++;
 	}
 	return (1);
@@ -54,57 +44,48 @@ int	ft_has_double(t_stack *stck, int nbr)
 	return (0);
 }
 
-t_stack	*ft_fill_from_string(t_stack *tmp, char **argv, t_stack *a)
+t_stack	*ft_fill_from_string(t_stack *tmp, char *argv, t_stack *a)
 {
 	int		i;
 	char	**str;
 
 	i = 0;
-	if (!argv || !*argv || !**argv)
-		return (ft_putstr_fd("Error\n", 2), NULL);
-	else
+	str = ft_split(argv, ' ');
+	if (!str)
+		return (NULL);
+	while (str[i])
 	{
-		str = ft_split(argv[1], ' ');
-		if (!str)
-			return (NULL);
-		while (str[i])
-		{
-			if (ft_has_double(a, ft_atoi(str[i])))
-				return (ft_splitfree(str),
-					ft_stckclear(a),
-					ft_putstr_fd("Error\n", 2), NULL);
-			tmp = ft_stcknew(ft_atoi(str[i]));
-			if (!tmp)
-				return (ft_stckclear(a), NULL);
-			ft_stckadd_back(&a, tmp);
-			i++;
-		}
-		return (ft_splitfree(str), a);
+		if (ft_has_double(a, ft_atoi(str[i])))
+			return (ft_splitfree(str),
+				ft_stckclear(a),
+				ft_putstr_fd("Error\n", 2), NULL);
+		tmp = ft_stcknew(ft_atoi(str[i]));
+		if (!tmp)
+			return (ft_stckclear(a), NULL);
+		ft_stckadd_back(&a, tmp);
+		i++;
 	}
+	return (ft_splitfree(str), a);
 }
 
-t_stacks	*ft_init_stack(char **argv, int argc, t_stacks *stck, t_stack *a)
+t_stacks	*ft_init_stack(char **argv, t_stacks *stck, t_stack *a)
 {
-	int			i;
-	t_stack		*tmp;
+	t_stack	*tmp;
+	char	*str;
+	int		i;
 
+	i = 1;
 	tmp = NULL;
-	if (argc == 2 && argv[1])
-		a = ft_fill_from_string(tmp, argv, a);
-	else
+	if (!*argv)
+		return (ft_putstr_fd("Error\n", 2), NULL);
+	str = ft_strdup(argv[i++]);
+	while (argv[i])
 	{
-		i = 1;
-		while (i < argc && argv[i])
-		{
-			if (ft_has_double(a, ft_atoi(argv[i])))
-				return (ft_stckclear(a), ft_putstr_fd("Error\n", 2), NULL);
-			tmp = ft_stcknew(ft_atoi(argv[i]));
-			if (!tmp)
-				return (ft_stckclear(a), NULL);
-			ft_stckadd_back(&a, tmp);
-			i++;
-		}
+		str = ft_strjoin(str, " ");
+		str = ft_strjoin(str, argv[i]);
+		i++;
 	}
+	a = ft_fill_from_string(tmp, str, a);
 	ft_set_index(&a);
 	stck = ft_newstacks(a);
 	return (stck);
@@ -123,7 +104,7 @@ int	main(int argc, char **argv)
 	}
 	if (argc > 1 && *argv[1])
 	{
-		stck = ft_init_stack(argv, argc, stck, a);
+		stck = ft_init_stack(argv, stck, a);
 		if (!stck)
 			return (free(stck), 0);
 		if (ft_is_sorted(stck->a))

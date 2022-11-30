@@ -6,7 +6,7 @@
 /*   By: luntiet- <luntiet-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 09:38:14 by luntiet-          #+#    #+#             */
-/*   Updated: 2022/11/28 11:08:04 by luntiet-         ###   ########.fr       */
+/*   Updated: 2022/11/30 16:36:27 by luntiet-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,4 +67,5 @@ int			ft_first_occurence(t_stack *stck, int max);
 long		ft_atol(char *str);
 int			ft_range(char **str);
 void		ft_splitfree(char **str);
+int			ft_check(char *arv, int j);
 #endif

@@ -4,5 +4,6 @@ libft/
 *.o
 push_swap
 .vscode
-push_swap_tester
-LeakSanitizer
+push_swap_tester/
+LeakSanitizer/
+checker_Mac
