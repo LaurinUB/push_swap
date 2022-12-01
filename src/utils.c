@@ -6,7 +6,7 @@
 /*   By: luntiet- <luntiet-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/27 10:49:50 by luntiet           #+#    #+#             */
-/*   Updated: 2022/11/30 16:28:23 by luntiet-         ###   ########.fr       */
+/*   Updated: 2022/12/01 13:49:32 by luntiet-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ int	ft_check(char *argv, int j)
 		if (ft_isdigit(argv[j]))
 			j++;
 		else if (argv[j] == '-' && ft_isdigit(argv[j + 1]))
+			j++;
+		else if (argv[j] == '+' && ft_isdigit(argv[j + 1]))
 			j++;
 		else if (argv[j] == ' ')
 			j++;
