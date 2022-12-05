@@ -6,7 +6,7 @@
 /*   By: luntiet- <luntiet-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 10:07:36 by luntiet-          #+#    #+#             */
-/*   Updated: 2022/11/30 16:16:06 by luntiet-         ###   ########.fr       */
+/*   Updated: 2022/12/05 08:37:13 by luntiet-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ t_stack	*ft_fill_from_string(t_stack *tmp, char *argv, t_stack *a)
 		ft_stckadd_back(&a, tmp);
 		i++;
 	}
-	return (ft_splitfree(str), a);
+	return (free(argv), ft_splitfree(str), a);
 }
 
 t_stacks	*ft_init_stack(char **argv, t_stacks *stck, t_stack *a)
@@ -79,10 +79,12 @@ t_stacks	*ft_init_stack(char **argv, t_stacks *stck, t_stack *a)
 	if (!*argv)
 		return (ft_putstr_fd("Error\n", 2), NULL);
 	str = ft_strdup(argv[i++]);
+	if (!str)
+		return (NULL);
 	while (argv[i])
 	{
-		str = ft_strjoin(str, " ");
-		str = ft_strjoin(str, argv[i]);
+		str = ft_strjoin_gnl(str, " ");
+		str = ft_strjoin_gnl(str, argv[i]);
 		i++;
 	}
 	a = ft_fill_from_string(tmp, str, a);

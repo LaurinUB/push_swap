@@ -6,7 +6,7 @@
 /*   By: luntiet- <luntiet-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/27 10:49:50 by luntiet           #+#    #+#             */
-/*   Updated: 2022/12/01 13:49:32 by luntiet-         ###   ########.fr       */
+/*   Updated: 2022/12/05 08:22:15 by luntiet-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	ft_check(char *argv, int j)
 	t = 0;
 	argv = ft_strtrim(argv, " ");
 	if (!*argv)
-		return (0);
+		return (free(argv), 0);
 	while (argv[j])
 	{
 		if (ft_isdigit(argv[j]))
@@ -31,9 +31,9 @@ int	ft_check(char *argv, int j)
 		else if (argv[j] == ' ')
 			j++;
 		else
-			return (0);
+			return (free(argv), 0);
 	}
-	return (1);
+	return (free(argv), 1);
 }
 
 long	ft_atol(char *str)
