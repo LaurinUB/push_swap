@@ -6,27 +6,11 @@
 /*   By: luntiet- <luntiet-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 10:07:36 by luntiet-          #+#    #+#             */
-/*   Updated: 2022/12/16 11:32:27 by luntiet-         ###   ########.fr       */
+/*   Updated: 2022/12/16 13:54:21 by luntiet-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
-
-int	has_double(t_stack *stck, int nbr)
-{
-	t_stack	*tmp;
-
-	if (!stck)
-		return (0);
-	tmp = stck;
-	while (tmp)
-	{
-		if (tmp->content == nbr)
-			return (1);
-		tmp = tmp->next;
-	}
-	return (0);
-}
 
 t_stack	*fill_from_string(t_stack *tmp, char *argv, t_stack *a)
 {
@@ -40,7 +24,7 @@ t_stack	*fill_from_string(t_stack *tmp, char *argv, t_stack *a)
 	while (str[i])
 	{
 		if (has_double(a, ft_atoi(str[i])))
-			return (splitnstck_free(a, str), ft_putstr_fd("Error\n", 2), NULL);
+			return (splitnstck_free(a, str), NULL);
 		tmp = stck_new(ft_atoi(str[i]));
 		if (!tmp)
 			return (splitnstck_free(a, str), NULL);
@@ -58,16 +42,20 @@ t_stacks	*init_stack(char **argv, t_stacks *stck, t_stack *a)
 
 	i = 1;
 	tmp = NULL;
-	if (!*argv)
+	if (argv[i] == NULL)
 		return (ft_putstr_fd("Error\n", 2), NULL);
 	str = NULL;
 	while (argv[i])
 	{
 		str = ft_strjoin_gnl(str, argv[i]);
+		if (str == NULL)
+			return (ft_putstr_fd("Error\n", 2), NULL);
 		str = ft_strjoin_gnl(str, " ");
 		i++;
 	}
 	a = fill_from_string(tmp, str, a);
+	if (!a)
+		return (free(str), ft_putstr_fd("Error\n", 2), NULL);
 	set_index(&a);
 	stck = new_stacks(a);
 	return (free (str), stck);

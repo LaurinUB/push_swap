@@ -6,7 +6,7 @@
 #    By: luntiet- <luntiet-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/08 10:12:23 by luntiet-          #+#    #+#              #
-#    Updated: 2022/12/16 10:24:07 by luntiet-         ###   ########.fr        #
+#    Updated: 2022/12/16 13:00:51 by luntiet-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,8 @@ SRC = ./src/push_swap.c \
 		./src/chunk_sort.c \
 		./src/sort_three.c \
 		./src/sort_five.c \
-		./src/sort_utils.c
+		./src/sort_utils.c \
+		./src/free_utils.c
 
 OBJ = $(SRC:.c=.o)
 

@@ -6,7 +6,7 @@
 /*   By: luntiet- <luntiet-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 09:38:14 by luntiet-          #+#    #+#             */
-/*   Updated: 2022/12/16 11:29:17 by luntiet-         ###   ########.fr       */
+/*   Updated: 2022/12/16 13:49:48 by luntiet-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,10 +63,12 @@ int			is_rev_sorted(t_stack *stck);
 int			is_sorted(t_stack *stck);
 void		chunk_size(t_stacks *stck);
 int			first_occurence(t_stack *stck, int max);
-//utils
-void		splitnstck_free(t_stack *a, char **split);
+//free utils
 void		stackfree(t_stacks *stck);
-int			is_int(char **str);
+void		splitnstck_free(t_stack *a, char **split);
 void		splitfree(char **str);
+//utils
+int			has_double(t_stack *stck, int nbr);
+int			is_int(char **str);
 int			check_input(char *arv);
 #endif

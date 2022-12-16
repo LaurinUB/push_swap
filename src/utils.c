@@ -6,11 +6,27 @@
 /*   By: luntiet- <luntiet-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/27 10:49:50 by luntiet           #+#    #+#             */
-/*   Updated: 2022/12/16 11:28:51 by luntiet-         ###   ########.fr       */
+/*   Updated: 2022/12/16 16:56:20 by luntiet-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
+
+int	has_double(t_stack *stck, int nbr)
+{
+	t_stack	*tmp;
+
+	if (!stck)
+		return (0);
+	tmp = stck;
+	while (tmp)
+	{
+		if (tmp->content == nbr)
+			return (1);
+		tmp = tmp->next;
+	}
+	return (0);
+}
 
 int	check_input(char *argv)
 {
@@ -37,6 +53,26 @@ int	check_input(char *argv)
 	return (free(arg), 1);
 }
 
+static int	check_int_max(char *argv)
+{
+	int		i;
+	char	**arg;
+
+	i = 0;
+	if (!argv)
+		return (0);
+	arg = ft_split(argv, ' ');
+	if (!arg[i])
+		return (splitfree(arg), 0);
+	while (arg[i])
+	{
+		if (ft_atol(arg[i]) > INT_MAX || ft_atol(arg[i]) < INT_MIN)
+			return (splitfree(arg), 0);
+		i++;
+	}
+	return (splitfree(arg), 1);
+}
+
 int	is_int(char **argv)
 {
 	int	i;
@@ -48,34 +84,9 @@ int	is_int(char **argv)
 	{
 		if (!check_input(argv[i]))
 			return (0);
-		if (ft_atol(argv[i]) > INT_MAX || ft_atol(argv[i]) < INT_MIN)
+		if (!check_int_max(argv[i]))
 			return (0);
 		i++;
 	}
 	return (1);
-}
-
-void	splitfree(char **str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
-	{
-		free(str[i]);
-		i++;
-	}
-	free(str);
-}
-
-void	stackfree(t_stacks *stck)
-{
-	stckclear(stck->a);
-	free(stck);
-}
-
-void	splitnstck_free(t_stack *a, char **split)
-{
-	splitfree(split);
-	stckclear(a);
 }
