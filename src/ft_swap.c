@@ -6,13 +6,13 @@
 /*   By: luntiet- <luntiet-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 11:54:20 by luntiet-          #+#    #+#             */
-/*   Updated: 2022/11/28 10:04:12 by luntiet-         ###   ########.fr       */
+/*   Updated: 2022/12/16 10:46:20 by luntiet-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void	ft_swap_a(t_stack **stck)
+void	swap_a(t_stack **stck)
 {
 	t_stack	*first;
 	t_stack	*third;
@@ -28,7 +28,7 @@ void	ft_swap_a(t_stack **stck)
 	}
 }
 
-void	ft_swap_b(t_stack **stck)
+void	swap_b(t_stack **stck)
 {
 	t_stack	*first;
 	t_stack	*third;
@@ -44,7 +44,7 @@ void	ft_swap_b(t_stack **stck)
 	}
 }
 
-void	ft_swap(t_stack **astck, t_stack **bstck)
+void	swap(t_stack **astck, t_stack **bstck)
 {
 	t_stack	*first;
 	t_stack	*third;
@@ -64,7 +64,7 @@ void	ft_swap(t_stack **astck, t_stack **bstck)
 		ft_printf("ss\n");
 	}
 	else if (astck && (*astck)->next && !*bstck)
-		ft_swap_a(astck);
+		swap_a(astck);
 	else if (!*astck && bstck && (*bstck)->next)
-		ft_swap_b(bstck);
+		swap_b(bstck);
 }

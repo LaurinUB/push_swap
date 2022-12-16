@@ -6,13 +6,13 @@
 /*   By: luntiet- <luntiet-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 11:23:47 by luntiet-          #+#    #+#             */
-/*   Updated: 2022/11/28 09:46:31 by luntiet-         ###   ########.fr       */
+/*   Updated: 2022/12/16 10:29:05 by luntiet-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-t_stack	*ft_next_min(t_stack **stck)
+t_stack	*next_min(t_stack **stck)
 {
 	t_stack	*min;
 	t_stack	*elmnt;
@@ -35,16 +35,16 @@ t_stack	*ft_next_min(t_stack **stck)
 	return (min);
 }
 
-void	ft_set_index(t_stack **stck)
+void	set_index(t_stack **stck)
 {
 	t_stack	*elmnt;
 	int		index;
 
 	index = 0;
-	elmnt = ft_next_min(stck);
+	elmnt = next_min(stck);
 	while (elmnt)
 	{
 		elmnt->index = index++;
-		elmnt = ft_next_min(stck);
+		elmnt = next_min(stck);
 	}
 }

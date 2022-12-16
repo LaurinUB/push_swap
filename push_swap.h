@@ -6,7 +6,7 @@
 /*   By: luntiet- <luntiet-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 09:38:14 by luntiet-          #+#    #+#             */
-/*   Updated: 2022/11/30 16:36:27 by luntiet-         ###   ########.fr       */
+/*   Updated: 2022/12/16 11:29:17 by luntiet-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,43 +29,44 @@ typedef struct s_stacks
 }					t_stacks;
 
 //swapper
-void		ft_swap_a(t_stack **stck);
-void		ft_swap_b(t_stack **stck);
-void		ft_swap(t_stack **astck, t_stack **bstck);
+void		swap_a(t_stack **stck);
+void		swap_b(t_stack **stck);
+void		swap(t_stack **astck, t_stack **bstck);
 //pusher
-void		ft_push_a(t_stack **astck, t_stack **bstck);
-void		ft_push_b(t_stack **astck, t_stack **bstck);
+void		push_a(t_stack **astck, t_stack **bstck);
+void		push_b(t_stack **astck, t_stack **bstck);
 //rotater
-void		ft_rotate_a(t_stack **astck);
-void		ft_rotate_b(t_stack **bstck);
-void		ft_rotate(t_stack **astck, t_stack **bstck);
-void		ft_reverse_rotate_a(t_stack **astck);
-void		ft_reverse_rotate_b(t_stack **bstck);
-void		ft_reverse_rotate(t_stack **astck, t_stack **bstck);
+void		rotate_a(t_stack **astck);
+void		rotate_b(t_stack **bstck);
+void		rotate(t_stack **astck, t_stack **bstck);
+void		reverse_rotate_a(t_stack **astck);
+void		reverse_rotate_b(t_stack **bstck);
+void		reverse_rotate(t_stack **astck, t_stack **bstck);
 //stack
-t_stacks	*ft_newstacks(t_stack *a);
-t_stack		*ft_stcknew(int content);
-int			ft_stcksize(t_stack *stck);
-t_stack		*ft_stcklast(t_stack *stck);
-void		ft_stckadd_back(t_stack **stck, t_stack *new);
-void		ft_stckclear(t_stack *stck);
+t_stacks	*new_stacks(t_stack *a);
+t_stack		*stck_new(int content);
+int			stcksize(t_stack *stck);
+t_stack		*stcklast(t_stack *stck);
+void		stckadd_back(t_stack **stck, t_stack *new);
+void		stckclear(t_stack *stck);
 //indexing
-void		ft_set_index(t_stack **stck);
-//sortcheck
-int			ft_first_top(t_stacks *stck, int max);
-int			ft_first_bot(t_stacks *stck, int max);
-int			ft_is_rev_sorted(t_stack *stck);
-int			ft_is_sorted(t_stack *stck);
-void		ft_sort(t_stacks *stck);
-void		ft_chunk(t_stacks *stck);
-void		ft_chunk_sort(t_stacks *stck, int chunk);
-void		ft_sort_three(t_stack **a, int max);
-void		ft_sort_five(t_stacks *stck);
-void		ft_counting_sort(t_stacks *stck);
-int			ft_first_occurence(t_stack *stck, int max);
-//libftvariants
-long		ft_atol(char *str);
-int			ft_range(char **str);
-void		ft_splitfree(char **str);
-int			ft_check(char *arv, int j);
+void		set_index(t_stack **stck);
+//sort
+void		sort_five(t_stacks *stck);
+void		sort_three(t_stack **a, int max);
+void		sort(t_stacks *stck);
+void		chunk_sort(t_stacks *st, int chunksize);
+//sort utils
+int			first_top(t_stacks *stck, int max);
+int			first_bot(t_stacks *stck, int max);
+int			is_rev_sorted(t_stack *stck);
+int			is_sorted(t_stack *stck);
+void		chunk_size(t_stacks *stck);
+int			first_occurence(t_stack *stck, int max);
+//utils
+void		splitnstck_free(t_stack *a, char **split);
+void		stackfree(t_stacks *stck);
+int			is_int(char **str);
+void		splitfree(char **str);
+int			check_input(char *arv);
 #endif

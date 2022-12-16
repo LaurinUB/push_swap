@@ -6,13 +6,13 @@
 /*   By: luntiet- <luntiet-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 12:53:38 by luntiet-          #+#    #+#             */
-/*   Updated: 2022/11/28 09:57:03 by luntiet-         ###   ########.fr       */
+/*   Updated: 2022/12/16 10:40:03 by luntiet-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-int	ft_is_sorted(t_stack *stck)
+int	is_sorted(t_stack *stck)
 {
 	if (!stck)
 		return (1);
@@ -26,7 +26,7 @@ int	ft_is_sorted(t_stack *stck)
 	return (1);
 }
 
-int	ft_is_rev_sorted(t_stack *stck)
+int	is_rev_sorted(t_stack *stck)
 {
 	if (!stck)
 		return (1);

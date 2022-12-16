@@ -6,13 +6,13 @@
 /*   By: luntiet- <luntiet-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 10:36:48 by luntiet-          #+#    #+#             */
-/*   Updated: 2022/11/26 15:41:49 by luntiet-         ###   ########.fr       */
+/*   Updated: 2022/12/16 10:41:21 by luntiet-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-t_stack	*ft_stcknew(int content)
+t_stack	*stck_new(int content)
 {
 	t_stack	*element;
 
@@ -25,7 +25,7 @@ t_stack	*ft_stcknew(int content)
 	return (element);
 }
 
-int	ft_stcksize(t_stack *stck)
+int	stcksize(t_stack *stck)
 {
 	int		count;
 	t_stack	*tmp;
@@ -42,7 +42,7 @@ int	ft_stcksize(t_stack *stck)
 	return (count);
 }
 
-t_stack	*ft_stcklast(t_stack *stck)
+t_stack	*stcklast(t_stack *stck)
 {
 	if (!stck)
 		return (stck);
@@ -53,26 +53,26 @@ t_stack	*ft_stcklast(t_stack *stck)
 	return (stck);
 }
 
-void	ft_stckadd_back(t_stack **stck, t_stack *new)
+void	stckadd_back(t_stack **stck, t_stack *new)
 {
 	if (*stck == NULL)
 	{
 		*stck = new;
 		new->next = NULL;
 	}
-	if (ft_stcksize(new) > 1)
+	if (stcksize(new) > 1)
 	{
-		ft_stcklast(*stck)->next = new;
-		ft_stcklast(*stck)->next = NULL;
+		stcklast(*stck)->next = new;
+		stcklast(*stck)->next = NULL;
 	}
 	else
 	{
-		ft_stcklast(*stck)->next = new;
+		stcklast(*stck)->next = new;
 		new->next = NULL;
 	}
 }
 
-void	ft_stckclear(t_stack *stck)
+void	stckclear(t_stack *stck)
 {
 	t_stack	*tmp;
 	t_stack	*dl;

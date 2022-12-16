@@ -6,71 +6,48 @@
 /*   By: luntiet- <luntiet-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/27 10:49:50 by luntiet           #+#    #+#             */
-/*   Updated: 2022/12/05 08:22:15 by luntiet-         ###   ########.fr       */
+/*   Updated: 2022/12/16 11:28:51 by luntiet-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-int	ft_check(char *argv, int j)
+int	check_input(char *argv)
 {
-	int	t;
+	int		j;
+	char	*arg;
 
-	t = 0;
-	argv = ft_strtrim(argv, " ");
-	if (!*argv)
-		return (free(argv), 0);
-	while (argv[j])
+	j = 0;
+	arg = ft_strtrim(argv, " ");
+	if (!arg)
+		return (free(arg), 0);
+	while (arg[j])
 	{
-		if (ft_isdigit(argv[j]))
+		if (ft_isdigit(arg[j]))
 			j++;
-		else if (argv[j] == '-' && ft_isdigit(argv[j + 1]))
+		else if (arg[j] == '-' && ft_isdigit(arg[j + 1]))
 			j++;
-		else if (argv[j] == '+' && ft_isdigit(argv[j + 1]))
+		else if (arg[j] == '+' && ft_isdigit(arg[j + 1]))
 			j++;
-		else if (argv[j] == ' ')
+		else if (arg[j] == ' ')
 			j++;
 		else
-			return (free(argv), 0);
+			return (free(arg), 0);
 	}
-	return (free(argv), 1);
+	return (free(arg), 1);
 }
 
-long	ft_atol(char *str)
-{
-	long	n;
-	int		sign;
-
-	n = 0;
-	sign = 1;
-	if (!str)
-		return (0);
-	while (*str == ' ' || *str == '\t' || *str == '\r' \
-		|| *str == '\n' || *str == '\v' || *str == '\f')
-		str++;
-	if ((*str == '+' || *str == '-'))
-	{
-		if (*str == '-')
-			sign *= -1;
-		str++;
-	}
-	while (ft_isdigit(*str))
-	{
-		n = 10 * n + (*str - '0');
-		str++;
-	}
-	return (n * sign);
-}
-
-int	ft_range(char **argv)
+int	is_int(char **argv)
 {
 	int	i;
 
-	i = 0;
+	i = 1;
 	if (!*argv)
 		return (0);
 	while (argv[i])
 	{
+		if (!check_input(argv[i]))
+			return (0);
 		if (ft_atol(argv[i]) > INT_MAX || ft_atol(argv[i]) < INT_MIN)
 			return (0);
 		i++;
@@ -78,7 +55,7 @@ int	ft_range(char **argv)
 	return (1);
 }
 
-void	ft_splitfree(char **str)
+void	splitfree(char **str)
 {
 	int	i;
 
@@ -89,4 +66,16 @@ void	ft_splitfree(char **str)
 		i++;
 	}
 	free(str);
+}
+
+void	stackfree(t_stacks *stck)
+{
+	stckclear(stck->a);
+	free(stck);
+}
+
+void	splitnstck_free(t_stack *a, char **split)
+{
+	splitfree(split);
+	stckclear(a);
 }

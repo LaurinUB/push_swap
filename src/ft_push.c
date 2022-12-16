@@ -6,13 +6,13 @@
 /*   By: luntiet- <luntiet-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 11:32:17 by luntiet-          #+#    #+#             */
-/*   Updated: 2022/11/25 16:26:18 by luntiet-         ###   ########.fr       */
+/*   Updated: 2022/12/16 10:45:26 by luntiet-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void	ft_push_a(t_stack **astck, t_stack **bstck)
+void	push_a(t_stack **astck, t_stack **bstck)
 {
 	t_stack	*tmp;
 
@@ -34,7 +34,7 @@ void	ft_push_a(t_stack **astck, t_stack **bstck)
 	}
 }
 
-void	ft_push_b(t_stack **astck, t_stack **bstck)
+void	push_b(t_stack **astck, t_stack **bstck)
 {
 	t_stack	*tmp;
 
