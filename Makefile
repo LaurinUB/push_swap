@@ -57,6 +57,8 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	$(CC) $(CFLAGS) -c -o $@ $<
 
 $(LIBFT):
+	@git submodule init
+	@git submodule update
 	@cd libft && make && make clean
 
 debug : CFLAGS += -g
