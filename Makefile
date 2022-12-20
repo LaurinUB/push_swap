@@ -6,34 +6,35 @@
 #    By: luntiet- <luntiet-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/08 10:12:23 by luntiet-          #+#    #+#              #
-#    Updated: 2022/12/16 13:00:51 by luntiet-         ###   ########.fr        #
+#    Updated: 2022/12/20 10:05:13 by luntiet-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CC = cc
-
+CCC = cc
 CFLAGS = -Wall -Werror -Wextra
-
 NAME = push_swap
+SRC_DIR = src
+OBJ_DIR = obj
+DIR_DUP = mkdir -p $(@D)
 
-SRC = ./src/push_swap.c \
-		./src/utils.c \
-		./src/ft_swap.c \
-		./src/ft_push.c \
-		./src/ft_rotate.c \
-		./src/ft_reverse_rotate.c \
-		./src/t_stack.c \
-		./src/t_stack_utils.c \
-		./src/t_stacks.c \
-		./src/index.c \
-		./src/chunk_sort.c \
-		./src/sort_three.c \
-		./src/sort_five.c \
-		./src/sort_utils.c \
-		./src/free_utils.c
+SRC = push_swap.c \
+		utils.c \
+		ft_swap.c \
+		ft_push.c \
+		ft_rotate.c \
+		ft_reverse_rotate.c \
+		t_stack.c \
+		t_stack_utils.c \
+		t_stacks.c \
+		index.c \
+		chunk_sort.c \
+		sort_three.c \
+		sort_five.c \
+		sort_utils.c \
+		free_utils.c
 
-OBJ = $(SRC:.c=.o)
-
+SRC := $(SRC:%=$(SRC_DIR)/%)
+OBJ = $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 LIBFT = ./libft/libft.a
 
 all: $(NAME)
@@ -51,8 +52,12 @@ $(LSANLIB):
 $(NAME): $(LIBFT) $(OBJ)
 	@$(CC) $(LINK_FLAGS) $(OBJ) $(LIBFT) -o $(NAME)
 
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
+	$(DIR_DUP)
+	$(CC) $(CFLAGS) -c -o $@ $<
+
 $(LIBFT):
-	@git clone https://github.com/LaurinUB/libft
+	@if [ ! -d "libft" ]; then git clone https://github.com/LaurinUB/libft; fi
 	@cd libft && make && make clean
 
 debug : CFLAGS += -g
@@ -60,11 +65,10 @@ debug : CFLAGS += -g
 debug : re
 
 clean:
-	@rm -rf $(OBJ)
+	@rm -rf $(OBJ) $(OBJ_DIR)
 
 fclean: clean
 	@rm -rf $(NAME)
-	@rm -rf ./libft
 
 re: fclean all
 
